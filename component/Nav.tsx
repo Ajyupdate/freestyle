@@ -28,6 +28,8 @@ const Nav = (props: iNav) => {
             <Box><Link>Buy</Link></Box>
             <Spacer/>
             <Box><Link>Sell</Link></Box>
+            <Spacer/>
+            <Box><Link>Agent</Link></Box>
           </Flex>
         </Box>
 
