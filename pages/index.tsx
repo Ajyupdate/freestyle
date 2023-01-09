@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
     
-      <Box bg='#F5F5F5'>
+      <Box >
         <LandingPage/>
       </Box>
       

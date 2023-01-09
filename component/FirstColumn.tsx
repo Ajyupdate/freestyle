@@ -11,7 +11,9 @@ const FirstColumn = (props: iFirstColumn) => {
     <Box px={16} mt={16}>
         <Flex>
           <Box  maxW='45rem'>
-            <Heading >Find real estate that suits you. Buy, sell or rent your properties easily.</Heading>
+            <Heading >Find <Text as ="span" color='#1CA5AE'>real estate</Text> that suits you. 
+              <Text as='span' color='#1CA5AE'>Buy, sell</Text> or <Text as='span' color='#1CA5AE'>rent</Text> your properties easily.
+            </Heading>
             <Text fontSize='l' mt={8}>
             
               A great place to buy, sell and rent your properties. RealEstatery is here to find you an apartment you want, in the region you want and style you want without any commissions.
@@ -48,7 +50,7 @@ const FirstColumn = (props: iFirstColumn) => {
         <Box as='hr' color='#03373A'></Box>
 
         <Center>
-        <Flex gap={4} mt={8}>
+        <Flex gap={4} my={8}>
           
           <Box>
             <Heading as='h5' size={'md'}>
