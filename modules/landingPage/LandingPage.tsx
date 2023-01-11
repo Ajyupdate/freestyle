@@ -3,6 +3,7 @@ import React from 'react'
 import BestChoice from '../../component/BestChoice'
 import FirstColumn from '../../component/FirstColumn'
 import Nav from '../../component/Nav'
+import WhyChooseUs from '../../component/WhyChooseUs'
 
 export interface iLandingPage {}
 
@@ -13,7 +14,13 @@ const LandingPage = (props: iLandingPage) => {
         <Nav/>
         <FirstColumn/>
       </Box>
+      <Box>
       <BestChoice/>
+      <WhyChooseUs />
+      </Box>
+     
+      
+      
     
     </div>
   )
