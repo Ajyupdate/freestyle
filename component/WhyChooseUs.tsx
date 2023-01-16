@@ -2,7 +2,7 @@ import { Box, Card, Center, Grid, GridItem, Heading, Text } from '@chakra-ui/rea
 import Image from 'next/image'
 import React from 'react'
 import moneys from 'public/moneys.svg'
-import homeHashTag from 'public/homeHashTag.svg'
+import homeHashTag from 'public/homeHashtag.svg'
 import securitysafe from 'public/securitysafe.svg'
 import presentionchart from 'public/presentionchart.svg'
 
