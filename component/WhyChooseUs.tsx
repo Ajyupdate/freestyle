@@ -2,7 +2,7 @@ import { Box, Card, Center, Grid, GridItem, Heading, Text } from '@chakra-ui/rea
 import Image from 'next/image'
 import React from 'react'
 import moneys from 'public/moneys.svg'
-import homehashTag from 'public/homehashTag.svg'
+import homehashtag from 'public/homehashtag.svg'
 import securitysafe from 'public/securitysafe.svg'
 import presentionchart from 'public/presentionchart.svg'
 
@@ -47,7 +47,7 @@ const WhyChooseUs = () => {
           </GridItem>
 
           <GridItem w='100%' h='10'>
-            <Center mr={4}><Image src={homehashTag} alt="money icon"/></Center>
+            <Center mr={4}><Image src={homehashtag} alt="money icon"/></Center>
             <Center><Text fontSize={30} mr={4} color='#1CA5AE'>Property Insurance</Text></Center>
             <Center><Text px={4}>Better Interest rate on the market. RealEstatery gives you the opportunity of the best prices in the market.</Text></Center>
             
