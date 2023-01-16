@@ -4,6 +4,8 @@ import BestChoice from '../../component/BestChoice'
 import FirstColumn from '../../component/FirstColumn'
 import LandingContact from '../../component/LandingContact'
 import Nav from '../../component/Nav'
+import Subscription from '../../component/Subscription'
+
 import WhyChooseUs from '../../component/WhyChooseUs'
 
 export interface iLandingPage {}
@@ -19,6 +21,8 @@ const LandingPage = (props: iLandingPage) => {
       <BestChoice/>
       <WhyChooseUs />
       <LandingContact/>
+      <Subscription/>
+      
       </Box>
      
       

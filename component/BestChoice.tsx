@@ -17,7 +17,7 @@ const BestChoice = () => {
         <Box px={16} mt={8}>
             <Flex >
                 <Box py={4}>
-                    <Heading fontSize='20px' color='#1CA5AE'>Best Choices  </Heading>
+                    <Heading fontSize='21px' color='#1CA5AE'>Best Choices  </Heading>
                     <Heading fontSize='30px' py={4}>Popular Residencies</Heading>
                 </Box>
 
