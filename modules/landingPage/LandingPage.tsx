@@ -2,6 +2,8 @@ import { Box } from '@chakra-ui/react'
 import React from 'react'
 import BestChoice from '../../component/BestChoice'
 import FirstColumn from '../../component/FirstColumn'
+import LargeWithLogoLeft from '../../component/Footer'
+import LargeWithAppLinksAndSocial from '../../component/Footer'
 import LandingContact from '../../component/LandingContact'
 import Nav from '../../component/Nav'
 import Subscription from '../../component/Subscription'
@@ -22,6 +24,8 @@ const LandingPage = (props: iLandingPage) => {
       <WhyChooseUs />
       <LandingContact/>
       <Subscription/>
+      {/* <LargeWithAppLinksAndSocial/> */}
+      <LargeWithLogoLeft/>
       
       </Box>
      
