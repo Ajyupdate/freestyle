@@ -118,7 +118,7 @@ export default function Nav() {
           <Select variant='unstyled' size='sm' w={20} >
             <option value='option1'>ENG</option>
               <option value='option2'>Option 2</option>
-              <option value='option3'>Option 3</option>
+             
             </Select>
           <Button
             display={{ base: 'none', md: 'inline-flex' }}
