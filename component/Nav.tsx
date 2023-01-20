@@ -26,6 +26,48 @@ import {
 } from '@chakra-ui/icons';
 import { CompanyName } from './CompanyName';
 
+
+
+interface NavItem {
+  label: string;
+  subLabel?: string;
+  children?: Array<NavItem>;
+  href?: string;
+}
+
+const NAV_ITEMS: Array<NavItem> = [
+  {
+    label: 'Home',
+    href: '#'
+  },
+  {
+    label: 'Rent',
+    children: [
+      {
+        label: 'Job Board',
+        subLabel: 'Find your dream design job',
+        href: '#',
+      },
+      {
+        label: 'Freelance Projects',
+        subLabel: 'An exclusive list for contract work',
+        href: '#',
+      },
+    ],
+  },
+  {
+    label: 'Buy',
+    href: '#',
+  },
+  {
+    label: 'Sell',
+    href: '#',
+  },
+  {
+    label: 'Agents',
+    href: '#',
+  },
+];
 export default function Nav() {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -53,12 +95,12 @@ export default function Nav() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
+          <Box
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}>
             {CompanyName}
-          </Text>
+          </Box>
 
           
         </Flex>
@@ -73,10 +115,10 @@ export default function Nav() {
           direction={'row'}
           spacing={6}>
           
-          <Select variant='unstyled' size='lg' w={20} >
+          <Select variant='unstyled' size='sm' w={20} >
             <option value='option1'>ENG</option>
               <option value='option2'>Option 2</option>
-              <option value='option3'>Option 3</option>
+             
             </Select>
           <Button
             display={{ base: 'none', md: 'inline-flex' }}
@@ -244,43 +286,95 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   );
 };
 
-interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
-}
 
-const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: 'Home',
-    href: '#'
-  },
-  {
-    label: 'Rent',
-    children: [
-      {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#',
-      },
-      {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
-      },
-    ],
-  },
-  {
-    label: 'Buy',
-    href: '#',
-  },
-  {
-    label: 'Sell',
-    href: '#',
-  },
-  {
-    label: 'Agents',
-    href: '#',
-  },
-];
+
+
+
+
+
+
+// interface NavItem {
+//   label: string;
+//   subLabel?: string;
+//   children?: Array<NavItem>;
+//   href?: string;
+// }
+
+// const NAV_ITEMS: Array<NavItem> = [
+//   {
+//     label: 'Home',
+//     href: '#'
+//   },
+//   {
+//     label: 'Rent',
+//     children: [
+//       {
+//         label: 'Job Board',
+//         subLabel: 'Find your dream design job',
+//         href: '#',
+//       },
+//       {
+//         label: 'Freelance Projects',
+//         subLabel: 'An exclusive list for contract work',
+//         href: '#',
+//       },
+//     ],
+//   },
+//   {
+//     label: 'Buy',
+//     href: '#',
+//   },
+//   {
+//     label: 'Sell',
+//     href: '#',
+//   },
+//   {
+//     label: 'Agents',
+//     href: '#',
+//   },
+// ];
+// export default function Nav(){
+//   const {isOpen, onToggle} = useDisclosure();
+
+//   return(
+//     <Box px={16}>
+      
+//       <Flex
+//       minH={'60px'}
+//               py={{ base: 2 }}
+              
+//               borderStyle={'solid'}
+//               borderColor={useColorModeValue('gray.200', 'gray.900')}
+//               align={'center'}>
+//         <Flex
+//           flex={{ base: 1, md: 'auto' }}
+//           ml={{ base: -2 }}
+//           display={{ base: 'flex', md: 'none' }}>
+//           <IconButton
+//             onClick={onToggle}
+//             icon={
+//               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+//             }
+//             variant={'ghost'}
+//             aria-label={'Toggle Navigation'}
+//           />
+//           </Flex>
+
+           
+//           <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+//            <Box
+//              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+//              fontFamily={'heading'}
+//              color={useColorModeValue('gray.800', 'white')}>
+//              {CompanyName}
+            
+//            </Box>
+
+//          </Flex>
+
+          
+//       </Flex>
+//     </Box>
+//   )
+
+// }
