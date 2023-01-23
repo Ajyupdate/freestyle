@@ -72,7 +72,7 @@ export default function Nav() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box  px={16} >
+    <Box  px={[0, 16]}  >
       <Flex
         
         minH={'60px'}
@@ -88,7 +88,7 @@ export default function Nav() {
           <IconButton
             onClick={onToggle}
             icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon mt={1} w={5} h={5} />
             }
             variant={'ghost'}
             aria-label={'Toggle Navigation'}

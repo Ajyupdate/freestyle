@@ -21,7 +21,7 @@ import {
 
 export default function FirstColumn() {
   return (
-    <Container maxW={'7xl'} px={'8'}>
+    <Container maxW={'7xl'} px={[1, 8]}>
       <Stack
         align={'center'}
         spacing={{ base: 8, md: 10 }}
