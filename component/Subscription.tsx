@@ -5,7 +5,7 @@ export interface iSubscription {}
 
 const Subscription = (iSubscription: iSubscription) => {
   return (
-    <Box bg='#03373A' mx={16} color='white' mt={20}>
+    <Box bg='#03373A' mx={16} color='white' mt={20} p={8}>
 
         
           <Box pt={8}>
@@ -16,7 +16,7 @@ const Subscription = (iSubscription: iSubscription) => {
 
           <Box pt={4}>
           <Center >
-                <Text fontWeight='400' fontSize='20px'>Subscribe and find super attractive price quotes from us. 
+                <Text fontWeight='400' align={'center'} fontSize='20px'>Subscribe and find super attractive price quotes from us. 
                     find a residence soon.
                 </Text>
             </Center>
