@@ -39,7 +39,7 @@ const Feature = ({ title, text, image }: FeatureProps) => {
 
 export default function SimpleThreeColumns() {
   return (
-  <Box px={20} mt={20}>        
+  <Box px={[6, 16]} mt={20}>        
       <Center mt={8}>
         <Heading>
             Why Choose Us 
@@ -47,7 +47,7 @@ export default function SimpleThreeColumns() {
       </Center>
       
       <Center mt={3} mb={8}>
-        <Text>RealEstatery is committed to helping you reach your satisfaction</Text>
+        <Text align={'center'}>RealEstatery is committed to helping you reach your satisfaction</Text>
        </Center>
 
       <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>

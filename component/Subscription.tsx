@@ -5,12 +5,12 @@ export interface iSubscription {}
 
 const Subscription = (iSubscription: iSubscription) => {
   return (
-    <Box bg='#03373A' mx={16} color='white' mt={20} p={8}>
+    <Box bg='#03373A' mx={{base:0, md:16}} p={8} color='white' mt={20} >
 
         
-          <Box pt={8}>
+          <Box >
             <Center>
-              <Heading  fontSize='36px' fontWeight='600px'>Subscribe to our newsletter</Heading>
+              <Heading  fontSize='36px' textAlign={'center'} fontWeight='600px'>Subscribe to our newsletter</Heading>
             </Center>
           </Box>
 
