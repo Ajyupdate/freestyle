@@ -57,7 +57,7 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: 'Buy',
-    href: '#',
+    href: './buy',
   },
   {
     label: 'Sell',
