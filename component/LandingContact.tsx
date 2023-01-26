@@ -20,7 +20,7 @@ const LandingContact = (props: iLandingPage) => {
 
             <Spacer/>
             
-            <Box maxW='45rem'>
+            <Box maxW='45rem' ml={4}>
                 <Text mb={4} fontSize='3xl' color='#1CA5AE'>Contact us</Text>
                 <Heading fontSize='40px'  fontWeight='600'>
                 Get Started with RealEstatery

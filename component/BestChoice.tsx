@@ -18,7 +18,7 @@ interface FeatureProps {
 const Feature = ({ title, location, money, icon }: FeatureProps) => {
   return (
     
-    <Stack align={{base: 'center',  }}>
+    <Stack align={{base: 'center',  }} m={4}>
       <Flex
         
         >
@@ -50,11 +50,11 @@ export default function SimpleThreeColumns() {
             </Button>
         </Flex>
 
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{base:10, md: 0}}>
+      <SimpleGrid columns={{ base: 1, md: 3 }}  spacing={{base:10, md: 0}}>
         <Feature
           icon={fourKHouse}
           money={4000}
-          title={'Lifetime Support'}
+          title={'Primerose Mansion'}
           location={
             'Abuja Lagos'
           }
@@ -62,7 +62,7 @@ export default function SimpleThreeColumns() {
         <Feature
           icon={threeKHouse}
           money={3500}
-          title={'Unlimited Donations'}
+          title={'Oakwood Mansion'}
           location={
             'Abuja Lagos'
           }
@@ -70,7 +70,7 @@ export default function SimpleThreeColumns() {
         <Feature
           icon={sixKHouse}
           money={6000}
-          title={'Instant Delivery'}
+          title={'Lambo Homes'}
           location={
             'Abuja Lagos'
           }
