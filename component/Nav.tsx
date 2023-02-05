@@ -42,18 +42,7 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: 'Rent',
-    children: [
-      {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#',
-      },
-      {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
-      },
-    ],
+    href: '#'
   },
   {
     label: 'Buy',
@@ -72,16 +61,17 @@ export default function Nav() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box  px={[0, 16]}  >
+    <Box   >
       <Flex
         
         minH={'60px'}
         py={{ base: 2 }}
+        px={{base: 6, md:16}}
         
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         align={'center'}>
-        <Flex
+        {/* <Flex
           flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
           display={{ base: 'flex', md: 'none' }}>
@@ -93,7 +83,8 @@ export default function Nav() {
             variant={'ghost'}
             aria-label={'Toggle Navigation'}
           />
-        </Flex>
+        </Flex> */}
+
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Box
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
@@ -101,38 +92,33 @@ export default function Nav() {
             color={useColorModeValue('gray.800', 'white')}>
             {CompanyName}
           </Box>
-
-          
         </Flex>
+
+
         <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
           <DesktopNav />
         </Flex>
         <Spacer/>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
-          spacing={6}>
-          
-          <Select variant='unstyled' size='sm' w={20} >
-            <option value='option1'>ENG</option>
-              <option value='option2'>Option 2</option>
-             
-            </Select>
-          <Button
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'#03373A'}
-            // href={'#'}
-            _hover={{
-              bg: '#1CA5AE',
-            }}>
-            Contact
-          </Button>
-        </Stack>
+        <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <SelectAndContact />
+        </Flex>
+       
+        
+
+        <Flex
+          //flex={{ base: 1, md: '1' }}
+          ml={{ base: -2 }}
+          display={{ base: 'flex', md: 'none' }}>
+          <IconButton
+            onClick={onToggle}
+            icon={
+              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon mt={1} w={5} h={5} />
+            }
+            variant={'ghost'}
+            aria-label={'Toggle Navigation'}
+          />
+        </Flex>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -149,6 +135,7 @@ const DesktopNav = () => {
 
   return (
     <Stack direction={'row'} spacing={4}>
+      
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -185,6 +172,8 @@ const DesktopNav = () => {
           </Popover>
         </Box>
       ))}
+
+
     </Stack>
   );
 };
@@ -226,12 +215,35 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 const MobileNav = () => {
   return (
     <Stack
+      
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}>
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
+        <Box>
+          {NAV_ITEMS.map((navItem) => (
+          <MobileNavItem key={navItem.label} {...navItem} />           
+          ))}
+
+          <Button
+            // my={4}
+            fontSize={'sm'}
+            fontWeight={600}
+            color={'white'}
+            bg={'#03373A'}
+            // href={'#'}
+            _hover={{
+              bg: '#1CA5AE',
+            }}>
+            Contact
+          </Button>
+
+            <Select variant='unstyled' size='sm' w={20} >
+              <option value='option1'>ENG</option>
+              <option value='option2'>Option 2</option>  
+            </Select>
+              
+        </Box>
+      
     </Stack>
   );
 };
@@ -240,8 +252,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack spacing={4}  onClick={children && onToggle}>
       <Flex
+
         py={2}
         as={Link}
         href={href ?? '#'}
@@ -285,6 +298,38 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
     </Stack>
   );
 };
+
+
+const SelectAndContact = () => {
+  
+  return(
+    <Stack
+    flex={{ base: 1, md: 0 }}
+    justify={'flex-end'}
+    direction={'row'}
+    spacing={6}
+  >
+    <Select variant='unstyled' size='sm' w={20} >
+      <option value='option1'>ENG</option>
+      <option value='option2'>Option 2</option>  
+    </Select>
+
+    <Button
+      display={{ base: 'none', md: 'inline-flex' }}
+      fontSize={'sm'}
+      fontWeight={600}
+      color={'white'}
+      bg={'#03373A'}
+      // href={'#'}
+      _hover={{
+        bg: '#1CA5AE',
+      }}>
+      Contact
+    </Button>
+  </Stack> 
+
+  )
+}
 
 
 
