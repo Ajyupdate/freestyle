@@ -224,23 +224,25 @@ const MobileNav = () => {
           <MobileNavItem key={navItem.label} {...navItem} />           
           ))}
 
-          <Button
-            // my={4}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'#03373A'}
-            // href={'#'}
-            _hover={{
-              bg: '#1CA5AE',
-            }}>
-            Contact
-          </Button>
+          <Box ml={4}>
+            <Button
+              // my={4}
+              fontSize={'sm'}
+              fontWeight={600}
+              color={'white'}
+              bg={'#03373A'}
+              // href={'#'}
+              _hover={{
+                bg: '#1CA5AE',
+              }}>
+              Contact
+            </Button>
 
             <Select variant='unstyled' size='sm' w={20} >
               <option value='option1'>ENG</option>
               <option value='option2'>Option 2</option>  
             </Select>
+          </Box>  
               
         </Box>
       
@@ -256,6 +258,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
       <Flex
 
         py={2}
+        pl={4}
         as={Link}
         href={href ?? '#'}
         justify={'space-between'}
