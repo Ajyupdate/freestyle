@@ -42,29 +42,7 @@ export default function FirstColumn() {
           <Text color={'gray.500'} textAlign={{base: 'center', sm: 'unset'}}>
           A great place to buy, sell and rent your properties. RealEstatery is here to find you an apartment you want, in the region you want and style you want without any commissions.
           </Text>
-          <Stack
-            spacing={{ base: 4, sm: 6 }}
-            direction={{ base: 'column', sm: 'row' }}>
-            <Button
-              // rounded={'full'}
-              size={'lg'}
-              fontWeight={'normal'}
-              px={6}
-              colorScheme={'green'}
-              bg={'green.900'}
-              _hover={{ bg: 'green.300' }}>
-              Browse Properties
-            </Button>
-            <Button
-              variant='outline'
-              size={'lg'}
-              fontWeight={'normal'}
-              px={6}
-              _hover={{ bg: 'green.300' }}
-              >
-              Enquire Now
-            </Button>
-          </Stack>
+
         </Stack>
         <Flex
           flex={1}
@@ -115,42 +93,74 @@ export default function FirstColumn() {
           </Box>
         </Flex>
 
+        
+
 
         
       </Stack>
 
+      <Stack
+      align={{base:'center'}}
+      alignContent='center'
+        
+        mb={8}
+        spacing={{ base: 4, sm: 6 }}
+        position={'relative'}
+        zIndex={8}
+        direction={{ base: 'column', sm: 'row' }}>
+        <Button
+          // rounded={'full'}
+          size={'lg'}
+          fontWeight={'normal'}
+          px={6}
+          colorScheme={'green'}
+          bg={'green.900'}
+          _hover={{ bg: 'green.300' }}>
+          Browse Properties
+        </Button>
+        <Button
+          variant='outline'
+          size={'lg'}
+          fontWeight={'normal'}
+          px={6}
+          _hover={{ bg: 'green.300' }}
+          >
+          Enquire Now
+        </Button>
+          </Stack>
+
       <Box as='hr' color='#03373A'></Box>
 
-<Box>
-  <Flex gap={4}>
-    <Box>
-      <Heading as='h5' size={'md'}>
-        19K+
-      </Heading>
-      <Text fontSize='l'>
-        Properties
-      </Text>
-    </Box>
+      <Box my={4}>
+        <Flex textAlign={'center'} align={'center'} justify={'center'} gap={4}>
+          <Box p={4}>
+            <Heading as='h5' size={'md'}>
+              19K+
+            </Heading>
+            <Text fontSize='l'>
+              Properties
+            </Text>
+          </Box>
 
-    <Box>
-      <Heading as='h5' size={'md'}>
-        40m
-      </Heading>
-      <Text fontSize='l'>
-        Market Value
-      </Text>
-    </Box>
+          <Box p={4}>
+            <Heading as='h5' size={'md'}>
+              40m
+            </Heading>
+            <Text fontSize='l'>
+              Market Value
+            </Text>
+          </Box>
 
-    <Box>
-      <Heading as='h5' size={'md'}>
-        1K+
-      </Heading>
-      <Text fontSize='l'>
-        Available Properties
-      </Text>
-    </Box>
-  </Flex>
-</Box>
+          <Box p={4}>
+            <Heading as='h5' size={'md'}>
+              1K+
+            </Heading>
+            <Text fontSize='l'>
+              Available Properties
+            </Text>
+          </Box>
+        </Flex>
+      </Box>
 
 
 
