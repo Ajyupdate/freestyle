@@ -3,6 +3,7 @@
 
 
 import smallHome from 'public/smallHome.svg'
+import contactPic from 'public/contactPic.svg'
 import {
   Container,
   Stack,
@@ -21,7 +22,7 @@ import {
 
 export default function FirstColumn() {
   return (
-    <Container maxW={'7xl'} px={[1, 8]}>
+    <Container maxW={'7xl'} px={[6, 8]}>
       <Stack
         align={'center'}
         spacing={{ base: 8, md: 10 }}
@@ -32,39 +33,16 @@ export default function FirstColumn() {
           <Heading
             lineHeight={1.1}
             fontWeight={600}
+            textAlign={'center'}
             fontSize={{ base: '2xl', sm: '4xl', lg: '6xl' }}>
               Find <Text as ="span" color='#1CA5AE'>Real Estate</Text> that suits you. 
                <Text as='span' color='#1CA5AE'>Buy, sell</Text> or <Text as='span' color='#1CA5AE'>rent</Text> your properties easily.
           </Heading>
 
-          <Text color={'gray.500'}>
-            Snippy is a rich coding snippets app that lets you create your own
-            code snippets, categorize them, and even sync them in the cloud so
-            you can use them anywhere. All that is free!
+          <Text color={'gray.500'} textAlign={{base: 'center', sm: 'unset'}}>
+          A great place to buy, sell and rent your properties. RealEstatery is here to find you an apartment you want, in the region you want and style you want without any commissions.
           </Text>
-          <Stack
-            spacing={{ base: 4, sm: 6 }}
-            direction={{ base: 'column', sm: 'row' }}>
-            <Button
-              // rounded={'full'}
-              size={'lg'}
-              fontWeight={'normal'}
-              px={6}
-              colorScheme={'green'}
-              bg={'green.900'}
-              _hover={{ bg: 'green.300' }}>
-              Browse Properties
-            </Button>
-            <Button
-              variant='outline'
-              size={'lg'}
-              fontWeight={'normal'}
-              px={6}
-              _hover={{ bg: 'green.300' }}
-              >
-              Enquire Now
-            </Button>
-          </Stack>
+
         </Stack>
         <Flex
           flex={1}
@@ -106,13 +84,86 @@ export default function FirstColumn() {
               align={'center'}
               w={'100%'}
               h={'100%'}
+              p={{base: '24px'}}
               src={
                 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
               }
+             
             />
           </Box>
         </Flex>
+
+        
+
+
+        
       </Stack>
+
+      <Stack
+      align={{base:'center'}}
+      alignContent='center'
+        
+        mb={8}
+        spacing={{ base: 4, sm: 6 }}
+        position={'relative'}
+        zIndex={8}
+        direction={{ base: 'column', sm: 'row' }}>
+        <Button
+          // rounded={'full'}
+          size={'lg'}
+          fontWeight={'normal'}
+          px={6}
+          colorScheme={'green'}
+          bg={'green.900'}
+          _hover={{ bg: 'green.300' }}>
+          Browse Properties
+        </Button>
+        <Button
+          variant='outline'
+          size={'lg'}
+          fontWeight={'normal'}
+          px={6}
+          _hover={{ bg: 'green.300' }}
+          >
+          Enquire Now
+        </Button>
+          </Stack>
+
+      <Box as='hr' color='#03373A'></Box>
+
+      <Box my={4}>
+        <Flex textAlign={'center'} align={'center'} justify={'center'} gap={4}>
+          <Box p={4}>
+            <Heading as='h5' size={'md'}>
+              19K+
+            </Heading>
+            <Text fontSize='l'>
+              Properties
+            </Text>
+          </Box>
+
+          <Box p={4}>
+            <Heading as='h5' size={'md'}>
+              40m
+            </Heading>
+            <Text fontSize='l'>
+              Market Value
+            </Text>
+          </Box>
+
+          <Box p={4}>
+            <Heading as='h5' size={'md'}>
+              1K+
+            </Heading>
+            <Text fontSize='l'>
+              Available Properties
+            </Text>
+          </Box>
+        </Flex>
+      </Box>
+
+
+
     </Container>
   );
 }
