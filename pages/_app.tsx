@@ -4,10 +4,12 @@ import { ChakraProvider } from '@chakra-ui/react'
 import Nav from '../component/Nav'
 import Footer from '../component/Footer'
 
-import '@fontsource/source-sans-pro';
+import theme from '../config'
+import '@fontsource/lora';
+import '@fontsource/rubik';
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       {/* <Nav/> */}
       <Component {...pageProps} />
       {/* <Footer/> */}
