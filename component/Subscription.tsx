@@ -24,7 +24,7 @@ const Subscription = (iSubscription: iSubscription) => {
           
           <Box pt={8}>
             <Center>
-            <Button colorScheme='white' variant='outline'>
+            <Button width={{base: 'lg', sm: 'unset'}} colorScheme='white' variant='outline'>
               Get Started
             </Button>
             </Center>
