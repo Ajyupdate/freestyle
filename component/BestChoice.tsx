@@ -18,7 +18,7 @@ interface FeatureProps {
 const Feature = ({ title, location, money, icon }: FeatureProps) => {
   return (
     
-    <Stack align={{base: 'center',  }} m={4}>
+    <Stack align={{base: 'center',  }}>
       <Flex
         
         >
@@ -33,7 +33,7 @@ const Feature = ({ title, location, money, icon }: FeatureProps) => {
 
 export default function SimpleThreeColumns() {
   return (
-    <Box px={{base:1, md:16}} mt={12}>
+    <Box px={[6,8]} mt={12}>
     
         <Flex
               
@@ -45,7 +45,12 @@ export default function SimpleThreeColumns() {
 
             <Spacer/>
         
-            <Button  mt={4} leftIcon={<SearchIcon />}  colorScheme='teal' bg='#03373A' variant='solid'>
+            <Button 
+             mt={4} 
+             leftIcon={<SearchIcon />}  
+             colorScheme='teal' bg='#03373A' variant='solid'
+             display={{base: 'none', md: 'block'}}
+             >  
                 Search by Location
             </Button>
         </Flex>
@@ -76,6 +81,19 @@ export default function SimpleThreeColumns() {
           }
         />
       </SimpleGrid>
+
+      <Stack align={'center'} mt={4}>
+      <Button 
+        mt={4} 
+        leftIcon={<SearchIcon />}  
+        colorScheme='teal' bg='#03373A' variant='solid'
+        display={{base: 'block', md: 'none'}}
+        >  
+          Search by Location
+      </Button>
+      </Stack>
+      
+
     </Box>
   );
 }
