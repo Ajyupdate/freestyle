@@ -22,7 +22,8 @@ const Feature = ({ title, text, image }: FeatureProps) => {
   return (
     <Stack>
       <Center>
-        <Flex
+        <Flex 
+          direction={{ base: 'column', md: 'column' }}
           w={16}
           h={16}
           align={'center'}
