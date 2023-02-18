@@ -1,7 +1,4 @@
 
-
-
-
 import { ComponentState} from 'react';
 import { Box, SimpleGrid, Icon, Text, Stack, Flex, Center, Heading } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
@@ -20,9 +17,15 @@ interface FeatureProps {
 
 const Feature = ({ title, text, image }: FeatureProps) => {
   return (
-    <Stack>
+    <Stack 
+    _hover={{
+      boxShadow:'md',
+      p: 2
+    }}
+    >
       <Center>
-        <Flex 
+        <Flex
+        
           direction={{ base: 'column', md: 'column' }}
           w={16}
           h={16}

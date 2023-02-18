@@ -11,6 +11,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { CompanyName } from './CompanyName';
+import Copyright from './Copyright';
 
 const Logo = (props: any) => {
   return (
@@ -82,6 +83,8 @@ export default function LargeWithLogoLeft() {
             <Link href={'#'}>LinkedIn</Link>
           </Stack>
         </SimpleGrid>
+
+        <Copyright/>
       </Container>
     </Box>
   );
