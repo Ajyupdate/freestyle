@@ -41,7 +41,7 @@ const Feature = ({ title, text, image }: FeatureProps) => {
   );
 };
 
-export default function SimpleThreeColumns() {
+export default function WhyChooseUs() {
   return (
   <Box px={[6, 16]} mt={20}>        
       <Center mt={8}>

@@ -24,10 +24,8 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import { CompanyName } from './CompanyName';
 
-
-
+import { CompanyName } from '../../../component/CompanyName';
 interface NavItem {
   label: string;
   subLabel?: string;
@@ -109,7 +107,7 @@ export default function Nav() {
         </Flex>
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
+      <Collapse in={isOpen} animateOpacity >
         <MobileNav />
       </Collapse>
     </Box>
@@ -136,8 +134,13 @@ const DesktopNav = () => {
                 color={linkColor}
                 _hover={{
                   textDecoration: 'none',
-                  color: linkHoverColor,
-                }}>
+                  color: 'teal',
+                }}
+                _active={{
+                  borderBottom:"2px dashed blue"
+                }}
+                >
+                
                 {navItem.label}
               </Link>
             </PopoverTrigger>
@@ -207,9 +210,13 @@ const MobileNav = () => {
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}>
-        <Box>
+        <Box ml={6}
+        
+        >
+          
           {NAV_ITEMS.map((navItem) => (
-          <MobileNavItem key={navItem.label} {...navItem} />           
+            
+          <MobileNavItem  key={navItem.label} {...navItem} />           
           ))}
 
           <Button
