@@ -10,8 +10,8 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { CompanyName } from './CompanyName';
-import Copyright from './Copyright';
+import { CompanyName } from '../../../component/CompanyName';
+import Copyright from '../../../component/Copyright';
 
 const Logo = (props: any) => {
   return (
@@ -40,7 +40,7 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default function LargeWithLogoLeft() {
+export default function Footer() {
   return (
     <Box mt={12}
       bg={useColorModeValue('gray.50', 'gray.900')}

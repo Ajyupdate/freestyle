@@ -1,15 +1,12 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
-import BestChoice from '../../component/BestChoice'
-import Copyright from '../../component/Copyright'
-import FirstColumn from '../../component/FirstColumn'
-import LargeWithLogoLeft from '../../component/Footer'
-import LargeWithAppLinksAndSocial from '../../component/Footer'
-import LandingContact from '../../component/LandingContact'
-import Nav from '../../component/Nav'
-import Subscription from '../../component/Subscription'
-
-import WhyChooseUs from '../../component/WhyChooseUs'
+import BestChoice from './components/BestChoice'
+import FirstColumn from './components/FirstColumn'
+import LandingContact from './components/LandingContact'
+import Nav from './components/Nav'
+import Subscription from './components/Subscription'
+import WhyChooseUs from './components/WhyChooseUs'
+import Footer from './components/Footer'
 
 export interface iLandingPage {}
 
@@ -25,8 +22,7 @@ const LandingPage = (props: iLandingPage) => {
       <WhyChooseUs />
       <LandingContact/>
       <Subscription/>
-      {/* <LargeWithAppLinksAndSocial/> */}
-      <LargeWithLogoLeft/>
+      
       
       
       </Box>
