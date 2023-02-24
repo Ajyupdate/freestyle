@@ -7,24 +7,19 @@ import Image from 'next/image';
 import fourKHouse from 'public/FourKHouse.svg'
 import threeKHouse from 'public/threeKHouse.svg'
 import sixKHouse from 'public/sixKHouse.png'
+import { ISingleHouseProps } from '../../../component/types/HouseProps';
 
-interface FeatureProps {
-  title: string;
-  location: string;
-  money: number;
-  icon: ComponentState;
-}
 
-const Feature = ({ title, location, money, icon }: FeatureProps) => {
+const SingleHome = ({ title, location, price, image }: ISingleHouseProps) => {
   return (
     
     <Stack align={{base: 'center',  }}>
       <Flex
         
         >
-        <Image src={icon} alt={title}/>
+        <Image src={image} alt={title}/>
       </Flex>
-      <Text color='#1CA5AE' fontSize={'2xl'} fontWeight={600}>${money}K</Text>
+      <Text color='#1CA5AE' fontSize={'2xl'} fontWeight={600}>${price}K</Text>
       <Text fontSize='30' fontWeight={500}>{title}</Text>
       <Text fontSize='20' fontWeight={500} color={'gray.600'}>{location}</Text>
     </Stack>
@@ -56,25 +51,25 @@ export default function SimpleThreeColumns() {
         </Flex>
 
       <SimpleGrid columns={{ base: 1, md: 3 }}  spacing={{base:10, md: 0}}>
-        <Feature
-          icon={fourKHouse}
-          money={4000}
+        <SingleHome
+          image={fourKHouse}
+          price={4000}
           title={'Primerose Mansion'}
           location={
             'Abuja Lagos'
           }
         />
-        <Feature
-          icon={threeKHouse}
-          money={3500}
+        <SingleHome
+          image={threeKHouse}
+          price={3500}
           title={'Oakwood Mansion'}
           location={
             'Abuja Lagos'
           }
         />
-        <Feature
-          icon={sixKHouse}
-          money={6000}
+        <SingleHome
+          image={sixKHouse}
+          price={6000}
           title={'Lambo Homes'}
           location={
             'Abuja Lagos'
