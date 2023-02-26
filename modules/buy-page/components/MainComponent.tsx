@@ -3,24 +3,34 @@ import Image from "next/image";
 
 import { ComponentState, ReactElement } from 'react';
 import { ISingleHouseProps } from "../../../component/types/HouseProps";
-
+import { Icon } from "@chakra-ui/react";
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function MainComponentAction({title, location, price, image}: ISingleHouseProps){
     return(
-        <Box bg="gray.100" p="4" boxShadow="md">
+        <Box  p="4" border="1px" borderColor="gray.200"
+        _hover={{
+            boxShadow: 'lg'
+        }}
+        >
 
         {/* <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
             {/* Column 1 */}
 
 
           {/* </SimpleGrid>  */}
-            <Stack align={{base: 'center',  }}>
+            <Stack >
                 <Flex>
                     <Image src={image} alt={title}/>
                 </Flex>
                 <Text color='#1CA5AE' fontSize={'2xl'} fontWeight={600}>${price}K</Text>
                 <Text fontSize='30' fontWeight={500}>{title}</Text>
-                <Text fontSize='20' fontWeight={500} color={'gray.600'}>{location}</Text>
+
+                <Flex >
+                    <Icon as={FaMapMarkerAlt} color='gray.300' boxSize={6} />
+                    <Text fontSize='20' pl={4} fontWeight={500} color={'gray.600'}>{location}</Text>
+                </Flex>
+                
             </Stack>
         </Box>
         

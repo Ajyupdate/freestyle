@@ -23,6 +23,13 @@ export default function MainGrid(){
             price: 4000,
             image: fourKHouse
 
+        },
+        {
+            title: 'Primerose Mansion',
+            location: 'Abuja, Nigeia',
+            price: 4000,
+            image: fourKHouse
+
         }
     ]
 
