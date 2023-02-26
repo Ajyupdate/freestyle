@@ -90,6 +90,7 @@ export interface IBuyLayout{
 
 
 import { Box, Flex, Heading, SimpleGrid, useBreakpointValue } from "@chakra-ui/react";
+import Nav from "./Nav";
 
 function BuyLayout({children, sidebarContent}: IBuyLayout) {
   const sidebarWidth = useBreakpointValue({ base: "100%", md: "33.33%" });
@@ -98,11 +99,9 @@ function BuyLayout({children, sidebarContent}: IBuyLayout) {
   return (
     <Box>
       {/* Top Navigation */}
-      <Flex bg="gray.100" p="4" alignItems="center">
-        <Heading size="md" fontWeight="bold">
-          My BuyLayout
-        </Heading>
-      </Flex>
+      
+        <Nav/>
+      
 
       {/* Body */}
       <Flex p="4" flexDirection={{ base: "column", md: "row" }}>
