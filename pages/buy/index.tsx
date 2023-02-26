@@ -6,11 +6,19 @@ import Layout from '../../component/layout/landing-page/Layout'
 import { Box, Flex, SimpleGrid, Stack } from '@chakra-ui/react'
 import Image from 'next/image'
 import MainGrid from '../../modules/buy-page/components/MainGrid'
-
+import {Sidebar} from '../../modules/buy-page/components/Sidebar'
+import fourKHouse from 'public/FourKHouse.svg'
 export interface iBuy{
 
 }
-const sidebar = <div>hi how are yoou</div>
+// const sidebar = <div><Sidebar 
+// image={fourKHouse}
+//           price={4000}
+//           title={'Primerose Mansion'}
+//           location={
+//             'Abuja Lagos'
+//           }
+//                   /></div>
 const Buy: NextPageWithLayout = () => {
   return (
     <MainGrid/>
@@ -19,7 +27,7 @@ const Buy: NextPageWithLayout = () => {
 
 Buy.getLayout = function getLayout(page: ReactElement){
   return(
-    <BuyLayout sidebarContent = {sidebar}>
+    <BuyLayout sidebarContent = {Sidebar}>
       
       {page}
     </BuyLayout>

@@ -8,3 +8,9 @@ export interface ISingleHouseProps{
         
      
 }
+export interface ISideBarHomeProps{
+        title: string;
+        location: string;
+        price: number;
+        image: ComponentState;
+}
