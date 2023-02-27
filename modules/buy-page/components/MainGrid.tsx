@@ -1,5 +1,7 @@
 import { ISingleHouseProps } from "../../../component/types/HouseProps"
 import fourKHouse from 'public/FourKHouse.svg'
+import threeKHouse from 'public/threeKHouse.svg'
+import sixKHouse from 'public/sixKHouse.png'
 import MainComponentAction from "./MainComponent"
 import { SimpleGrid } from "@chakra-ui/react"
 export default function MainGrid(){
@@ -12,10 +14,10 @@ export default function MainGrid(){
 
         },
         {
-            title: 'Primerose Mansion',
+            title: 'Oakwood Mansion',
             location: 'Abuja, Nigeia',
-            price: 4000,
-            image: fourKHouse
+            price: 3500,
+            image: threeKHouse
 
         },{
             title: 'Primerose Mansion',
@@ -25,10 +27,10 @@ export default function MainGrid(){
 
         },
         {
-            title: 'Primerose Mansion',
+            title: 'Lambo Homes',
             location: 'Abuja, Nigeia',
-            price: 4000,
-            image: fourKHouse
+            price: 6000,
+            image: sixKHouse
 
         }
     ]
