@@ -33,7 +33,7 @@ export default function FirstColumn() {
           <Heading
             lineHeight={1.1}
             fontWeight={600}
-            textAlign={'center'}
+            textAlign={'left'}
             fontSize={{ base: '2xl', sm: '4xl', lg: '6xl' }}>
               Find <Text as ="span" color='#1CA5AE'>Real Estate</Text> that suits you. 
                <Text as='span' color='#1CA5AE'>Buy, sell</Text> or <Text as='span' color='#1CA5AE'>rent</Text> your properties easily.
