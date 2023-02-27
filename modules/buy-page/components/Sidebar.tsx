@@ -30,7 +30,7 @@ import { TbBrandBooking } from 'react-icons/tb';
             </Stack>
 
             <Box mt={8}>
-                <Flex>
+                <Flex mr={4}>
                     <Heading size="md" >
                         Popular Residencies
                     </Heading>
@@ -38,13 +38,13 @@ import { TbBrandBooking } from 'react-icons/tb';
                     <Text mb={8} as={'p'} size="sm">Share <Icon as={AiOutlineShareAlt}   /></Text>
                 </Flex>
                 
-                <Text>
+                <Text align={'left'} pr={4}>
                         A beautiful family house situated in the nice vivaverde neighborhood, near a train station. It is a cozy 60 square-meter house with a garage.
                     It has three bedrooms, two bathrooms and an ideal well-equipped kitchen with a perfect patio to do the laundry and a spacious living room with a lovely terrace with tables and chairs for relaxation. There are nice views of a big garden.
                     It is a perfect house for a couple.
                 </Text>
 
-                <Heading size="md" mt={4}>More Images</Heading>
+                <Heading size="md" mt={6}>More Images</Heading>
                 <Box>
                     <MoreImagesGrid/>
                 </Box>
