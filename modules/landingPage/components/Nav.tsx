@@ -210,7 +210,7 @@ const MobileNav = () => {
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}>
-        <Box ml={6}
+        <Box ml={4}
         
         >
           
@@ -221,6 +221,7 @@ const MobileNav = () => {
 
           <Button
             // my={4}
+            mr={4}
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
@@ -304,10 +305,9 @@ const SelectAndContact = () => {
     direction={'row'}
     spacing={6}
   >
-    <Select variant='unstyled' size='sm' w={20} >
-      <option value='option1'>ENG</option>
-      <option value='option2'>Option 2</option>  
-    </Select>
+    <Link href='/login'> <Text fontWeight={500} mt={2}>Login</Text></Link>
+   
+    
 
     <Button
       display={{ base: 'none', md: 'inline-flex' }}
