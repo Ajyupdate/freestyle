@@ -22,39 +22,39 @@ import {
 } from "@chakra-ui/react";
 import * as Yup from 'yup'
 
-interface ILoginFormProps{
-  firstName: string,
-  lastName: string,
+interface ISignUpFormProps{
+  first_name: string,
+  last_name: string,
   email: string,
-  phoneNumber: string,
-  city: string,
-  country: string,
+  phone_number: string,
+  // city: string,
+  street: string,
   password: string,
   confirmPassword: string,
 
 
 }
-export default function LoginForm() {
-  const initialValues:ILoginFormProps  = { 
-    firstName: '',
-    lastName: "",
+export default function SignUpForm() {
+  const initialValues:ISignUpFormProps  = { 
+    first_name: '',
+    last_name: "",
     email: "",
     password: "",
     confirmPassword: "",
-    phoneNumber: "",
-    city: '',
-    country: ''
+    phone_number: "",
+    // city: '',
+    street: ''
 
 
    };
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().max(15, 'must not exceed 15 character').required('required'),
-    lastName: Yup.string().max(15, 'must not exceed 15 character').required('required'),
-    email: Yup.string().email('Invalid email address').required('Required'),
-    phoneNumber: Yup.number().max(11, 'must not exceed 11').min(11, 'must not be less than 11').required(),
-    city: Yup.string().required(),
-    country: Yup.string().required(),
+    first_name: Yup.string().max(15, 'must not exceed 15 character').required(),
+    last_name: Yup.string().max(15, 'must not exceed 15 character').required(),
+    email: Yup.string().email('Invalid email address').required(),
+    phone_number: Yup.number().min(11, 'must not be less than 11').required(),
+    // city: Yup.string().required(),
+    // street: Yup.string().required(),
     password: Yup.string()
     .min(8, 'Password must be at least 8 characters')
     .required('Required'),
@@ -65,13 +65,27 @@ export default function LoginForm() {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      // validationSchema={validationSchema}
       onSubmit={(values) => {
-        console.log(values);
+        const { confirmPassword, ...data } = values;
+        fetch("https://real-estatery.herokuapp.com/seller/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       }}
     >
       {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
-        <Form  onSubmit={handleSubmit}>
+        <Form  >
           <Flex 
           direction={{ base: "column", md: "row" }}
            wrap="wrap" justify="space-between"
@@ -83,12 +97,12 @@ export default function LoginForm() {
               <Input
                 placeholder='First Name'
                 size={'lg'}
-                name="firstName"
-                value={values.firstName}
+                name="first_name"
+                value={values.first_name}
                 onChange={handleChange}
-                onBlur={handleBlur('firstName')}
+                onBlur={handleBlur('first_name')}
               />
-              <ErrorMessage  name='firstName'/>
+              <ErrorMessage  name='first_name'/>
             </FormControl>
 
             <FormControl my={6} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
@@ -96,12 +110,12 @@ export default function LoginForm() {
               <Input
                 placeholder='Last Name'
                 size={'lg'}
-                name="lastName"
-                value={values.lastName}
+                name="last_name"
+                value={values.last_name}
                 onChange={handleChange}
-                onBlur={handleBlur('firstName')}
+                onBlur={handleBlur('last_name')}
               />
-              <ErrorMessage  name='lastName'/>
+              <ErrorMessage  name='last_name'/>
             </FormControl>
 
             <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
@@ -123,36 +137,14 @@ export default function LoginForm() {
                 placeholder='Phone Number'
                 size={'lg'}
                 type="tel"
-                name="phoneNumber"
-                value={values.phoneNumber}
+                name="phone_number"
+                value={values.phone_number}
                 onChange={handleChange}
               />
-              <ErrorMessage  name='phoneNumber'/>
+              <ErrorMessage  name='phone_number'/>
             </FormControl>
 
-            <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
-              
-              <Input
-              placeholder='City'
-                size={'lg'}
-                name="City"
-                value={values.city}
-                onChange={handleChange}
-              />
-              <ErrorMessage  name='city'/>
-            </FormControl>
-
-            <FormControl my={6} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
-              
-              <Input
-                placeholder='Country'
-                size={'lg'}
-                name="country"
-                value={values.country}
-                onChange={handleChange}
-              />
-              <ErrorMessage  name='country'/>
-            </FormControl>
+            
 
             <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
@@ -180,6 +172,31 @@ export default function LoginForm() {
               <ErrorMessage  name='confirmPassword'/>
             </FormControl>
 
+            <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+              
+            <Input
+                placeholder='street'
+                size={'lg'}
+                name="street"
+                value={values.street}
+                onChange={handleChange}
+              />
+              <ErrorMessage  name='street'/>
+              
+            </FormControl> 
+
+            <FormControl my={6} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+              
+            {/* <Input
+              placeholder='City'
+                size={'lg'}
+                name="City"
+                value={values.city}
+                onChange={handleChange}
+              />
+              <ErrorMessage  name='city'/> */}
+            </FormControl> 
+
           </Flex>
           
 
@@ -193,6 +210,7 @@ export default function LoginForm() {
 
             <Stack spacing={10} pt={2} flex={1} align='center' >
               <Button
+                onClick={() => handleSubmit()}
                 w={'50%'}
                 loadingText="Submitting"
                 size="lg"
