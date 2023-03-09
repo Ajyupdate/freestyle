@@ -26,11 +26,15 @@ import {
 } from '@chakra-ui/icons';
 
 import { CompanyName } from '../../../component/CompanyName';
+import { useEffect, useState } from 'react';
 interface NavItem {
   label: string;
   subLabel?: string;
   children?: Array<NavItem>;
   href?: string;
+}
+type ITokenProps = {
+  isLoggedIn: boolean;
 }
 
 const NAV_ITEMS: Array<NavItem> = [
@@ -57,14 +61,21 @@ const NAV_ITEMS: Array<NavItem> = [
 ];
 export default function Nav() {
   const { isOpen, onToggle } = useDisclosure();
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(token){
+      setIsLoggedIn(true)
+    }
+  }, [])
   return (
     <Box   >
       <Flex
         
         minH={'60px'}
         py={{ base: 2 }}
-        px={{base: 6, md:16}}
+        px={{base: 6, md:'5%'}}
         
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
@@ -87,7 +98,7 @@ export default function Nav() {
         <Spacer/>
 
         <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-          <SelectAndContact />
+          <SelectAndContact isLoggedIn = {isLoggedIn}/>
         </Flex>
        
         
@@ -108,7 +119,7 @@ export default function Nav() {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity >
-        <MobileNav />
+        <MobileNav isLoggedIn={isLoggedIn}/>
       </Collapse>
     </Box>
   );
@@ -203,23 +214,22 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
   );
 };
 
-const MobileNav = () => {
+const MobileNav = ({isLoggedIn}: ITokenProps) => {
   return (
     <Stack
       
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
       display={{ md: 'none' }}>
-        <Box ml={4}
-        
-        >
+        <Box ml={'5%'}>
           
           {NAV_ITEMS.map((navItem) => (
             
           <MobileNavItem  key={navItem.label} {...navItem} />           
           ))}
+          <SelectAndContact isLoggedIn = {isLoggedIn}/>
 
-          <Button
+          {/* <Button
             // my={4}
             mr={4}
             fontSize={'sm'}
@@ -236,7 +246,7 @@ const MobileNav = () => {
             <Select variant='unstyled' size='sm' w={20} >
               <option value='option1'>ENG</option>
               <option value='option2'>Option 2</option>  
-            </Select>
+            </Select> */}
               
         </Box>
       
@@ -296,21 +306,24 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 };
 
 
-const SelectAndContact = () => {
+const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
   
   return(
     <Stack
     flex={{ base: 1, md: 0 }}
-    justify={'flex-end'}
+    justify={'flex-start'}
     direction={'row'}
     spacing={6}
   >
+    {isLoggedIn ?
+    <Link href='/sign-out'> <Text fontWeight={500} mt={2}>signOut</Text></Link>
+    :
     <Link href='/login'> <Text fontWeight={500} mt={2}>Login</Text></Link>
-   
+    }
     
 
     <Button
-      display={{ base: 'none', md: 'inline-flex' }}
+      // display={{ base: 'none', md: 'inline-flex' }}
       fontSize={'sm'}
       fontWeight={600}
       color={'white'}

@@ -17,7 +17,7 @@ const SingleHome = ({ title, location, price, image }: ISingleHouseProps) => {
       <Flex
         
         >
-        <Image src={image} alt={title}/>
+        <Image width={100000}  src={image} alt={title}/>
       </Flex>
       <Text color='#1CA5AE' fontSize={'2xl'} fontWeight={600}>${price}K</Text>
       <Text fontSize='30' fontWeight={500}>{title}</Text>
@@ -28,7 +28,7 @@ const SingleHome = ({ title, location, price, image }: ISingleHouseProps) => {
 
 export default function SimpleThreeColumns() {
   return (
-    <Box px={[6,8]} mt={12}>
+    <Box  px={{base: 6, md:'5%'}} mt={12}>
     
         <Flex
               
@@ -50,7 +50,7 @@ export default function SimpleThreeColumns() {
             </Button>
         </Flex>
 
-      <SimpleGrid columns={{ base: 1, md: 3 }}  spacing={{base:10, md: 0}}>
+      <SimpleGrid columns={{ base: 1, md: 3 }}  spacing={{base:10, md: '2%'}}>
         <SingleHome
           image={fourKHouse}
           price={4000}

@@ -5,7 +5,7 @@ export interface iSubscription {}
 
 const Subscription = (iSubscription: iSubscription) => {
   return (
-    <Box bg='#03373A' mx={{base:0, md:16}} p={8} color='white' mt={20} >
+    <Box bg='#03373A' mx={{base: 6, md:'5%'}} p={8} color='white' mt={20} >
 
         
           <Box >
