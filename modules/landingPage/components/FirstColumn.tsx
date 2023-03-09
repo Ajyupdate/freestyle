@@ -1,7 +1,7 @@
 
 
 
-
+import Image from 'next/image'
 import smallHome from 'public/smallHome.svg'
 import contactPic from 'public/contactPic.svg'
 import {
@@ -12,7 +12,7 @@ import {
   Heading,
   Text,
   Button,
-  Image,
+  
   Icon,
   IconButton,
   createIcon,
@@ -22,7 +22,7 @@ import {
 
 export default function FirstColumn() {
   return (
-    <Container maxW={'7xl'} px={[6, 8]}>
+    <Container maxW={'100%'}  px={{base: 6, md:'5%'}}>
       <Stack
         align={'center'}
         spacing={{ base: 8, md: 10 }}
@@ -80,14 +80,18 @@ export default function FirstColumn() {
             />
             <Image
               alt={'Hero Image'}
-              fit={'cover'}
-              align={'center'}
-              w={'100%'}
-              h={'100%'}
-              p={{base: '24px'}}
+              // objectFit="cover"
+              // objectPosition={'50% 50%'}
+              object-fit= "cover"
+              object-position= '50% 50%'
+              // fit={'cover'}
+              // align={'center'}
+              
+              width={1000}
+              height={1000}
+              // p={{base: '24px'}}
               src={
-                'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
-              }
+                smallHome}
              
             />
           </Box>

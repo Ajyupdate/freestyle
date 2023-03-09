@@ -5,6 +5,9 @@ import LandingPage from '../modules/landingPage/LandingPage'
 import Layout from '../component/layout/landing-page/Layout'
 import type { NextPageWithLayout } from '../component/types/next-page-with-layout'
 
+
+
+
 const Home: NextPageWithLayout = () => {
   return (
       <div>

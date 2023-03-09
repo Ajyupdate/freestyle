@@ -7,26 +7,26 @@ import * as React from 'react'
 import { Formik, Form, ErrorMessage } from "formik";
 import {
   FormControl,
-  FormLabel,
+  useToast,
   Input,
-  VStack,
-  HStack,
   Button,
   Stack,
   Flex,
   Box,
   Text,
   Link,
-  Checkbox,
-  Center,
 } from "@chakra-ui/react";
 import * as Yup from 'yup'
+import { useRouter } from "next/router";
+
 
 interface ISignInFormProps{
   email: string,
   password: string,
 }
 export default function SignInForm() {
+  const router = useRouter();
+  const toast = useToast();
   const initialValues:ISignInFormProps  = { 
     email: "",
     password: "",
@@ -42,9 +42,41 @@ export default function SignInForm() {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={(values) => {
-        console.log(values);
+      // validationSchema={validationSchema}
+      onSubmit= {({email, password}) => {
+        console.log(email);
+
+        const handleSubmit = async() => {
+
+        try{
+          const response = await fetch("https://real-estatery.herokuapp.com/seller/login", {
+            method: 'POST',
+            headers:{
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({email, password}),
+          })
+
+          if(!response.ok){
+            throw new Error('Login failed')
+          }
+          const {token} = await response.json()
+          localStorage.setItem('token', token)
+          router.push('/')
+        } catch (error){
+          toast({
+            title: 'Login failed',
+            description: "Please check your credentials and try again",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          })
+        }
+
+      }
+      handleSubmit()
+
+
       }}
     >
       {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
@@ -103,6 +135,7 @@ export default function SignInForm() {
 
             <Stack spacing={10} pt={2} flex={1} align='center' >
               <Button
+                onClick={() => handleSubmit()}
                 w={'50%'}
                 loadingText="Submitting"
                 size="lg"
