@@ -340,9 +340,9 @@ const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
     spacing={6}
   >
     {isLoggedIn ?
-    <Link href='/sign-out'> <Text fontWeight={500} mt={2}>signOut</Text></Link>
+    <Link href='auth/sign-out'> <Text fontWeight={500} mt={2}>signOut</Text></Link>
     :
-    <Link href='/sign-in'> <Text fontWeight={500} mt={2}>Login</Text></Link>
+    <Link href='auth/sign-in'> <Text fontWeight={500} mt={2}>Login</Text></Link>
     }
     
 
