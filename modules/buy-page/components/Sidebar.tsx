@@ -11,7 +11,8 @@ import MoreImagesGrid from "../../../component/MoreImagesGrid";
 
 import { MdOutlineMoney } from 'react-icons/md';
 import { TbBrandBooking } from 'react-icons/tb';
-import { Image } from "@chakra-ui/react";
+// import { Image } from "@chakra-ui/react";
+import Image from "next/image";
  function SidebarSkeleton({
     title,
     location,
@@ -23,11 +24,15 @@ import { Image } from "@chakra-ui/react";
         <Box h={{md: "500px" }} overflowY={{md: "scroll"}}>
             <Stack >
                 <Flex w={sidebarImageWidth}>
-                    <Image src={image} w={{sm: '50%'}} alt={title}/>
+                    <Image src={image}  alt={title}/>
                 </Flex>
                 <Text color='#1CA5AE' fontSize={'xl'} fontWeight={600}>${price}K</Text>
                 <Text fontSize='20' fontWeight={500}>{title}</Text>
-                <Text fontSize='10' fontWeight={500} color={'gray.600'}>{location}</Text>
+                <Flex >
+                    <Icon as={FaMapMarkerAlt} color='gray.300' boxSize={6} />
+                    <Text fontSize='20' pl={4} fontWeight={500} color={'gray.600'}>{location}</Text>
+                </Flex>
+                {/* <Text fontSize='10' fontWeight={500} color={'gray.600'}>{location}</Text> */}
             </Stack>
 
             <Box mt={8}>

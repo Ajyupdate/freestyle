@@ -70,7 +70,6 @@ export default function Nav() {
     try {
       const response = await fetch('https://real-estatery.herokuapp.com/seller/get_account', {
         headers: {
-          Authorization: `Bearer ${token}`
         }
       });
   
