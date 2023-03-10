@@ -70,7 +70,7 @@ function BuyLayout({children, sidebarContent}: IBuyLayout) {
         </Box>
 
         {/* Sidebar Component */}
-        <Box w={sidebarWidth} p="4"  boxShadow="md">
+        <Box display={{base: 'none', md: 'block'}} w={sidebarWidth} p="4"  boxShadow="md">
           
             {sidebarContent}
           
