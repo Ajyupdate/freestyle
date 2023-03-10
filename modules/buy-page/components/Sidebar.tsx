@@ -23,7 +23,7 @@ import { Image } from "@chakra-ui/react";
         <Box h={{md: "500px" }} overflowY={{md: "scroll"}}>
             <Stack >
                 <Flex w={sidebarImageWidth}>
-                    <Image src={image}  alt={title}/>
+                    <Image src={image} w={{sm: '50%'}} alt={title}/>
                 </Flex>
                 <Text color='#1CA5AE' fontSize={'xl'} fontWeight={600}>${price}K</Text>
                 <Text fontSize='20' fontWeight={500}>{title}</Text>
