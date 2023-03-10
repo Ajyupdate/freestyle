@@ -64,11 +64,35 @@ export default function Nav() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if(token){
-      setIsLoggedIn(true)
+    const getUserDetails = async () => {
+    const token = localStorage.getItem('token');
+  
+    try {
+      const response = await fetch('https://real-estatery.herokuapp.com/seller/get_account', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+  
+      const user = await response.json();
+      
+      
+      // Do something with the user details...
+    } catch (error) {
+      console.error(error);
+      setIsLoggedIn(false)
     }
-  }, [])
+  };
+  getUserDetails()
+  })
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token')
+  //   if(token){
+  //     setIsLoggedIn(true)
+  //     console.log(token)
+  //   }
+  // }, [])
   return (
     <Box   >
       <Flex
