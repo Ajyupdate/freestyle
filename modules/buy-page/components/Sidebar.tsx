@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Spacer, Stack, Text, useBreakpointValue, VStack } f
 import { Icon } from "@chakra-ui/react";
 import { AiOutlineShareAlt } from 'react-icons/ai';
 
-import Image from "next/image";
+//import Image from "next/image";
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { ISideBarHomeProps } from "../../../component/types/HouseProps";
 import fourKHouse from '../../../public/FourKHouse.svg'
@@ -11,6 +11,7 @@ import MoreImagesGrid from "../../../component/MoreImagesGrid";
 
 import { MdOutlineMoney } from 'react-icons/md';
 import { TbBrandBooking } from 'react-icons/tb';
+import { Image } from "@chakra-ui/react";
  function SidebarSkeleton({
     title,
     location,
@@ -19,10 +20,10 @@ import { TbBrandBooking } from 'react-icons/tb';
 }: ISideBarHomeProps){
     const sidebarImageWidth = useBreakpointValue({ base: "100%", md: "70%" });
     return(
-        <Box h="500px" overflowY="scroll">
+        <Box h={{md: "500px" }} overflowY={{md: "scroll"}}>
             <Stack >
                 <Flex w={sidebarImageWidth}>
-                    <Image src={image} alt={title}/>
+                    <Image src={image}  alt={title}/>
                 </Flex>
                 <Text color='#1CA5AE' fontSize={'xl'} fontWeight={600}>${price}K</Text>
                 <Text fontSize='20' fontWeight={500}>{title}</Text>
@@ -65,6 +66,7 @@ export const Sidebar =
    
         <SidebarSkeleton
         image={fourKHouse}
+
           price={4000}
           title={'Primerose Mansion'}
           location={

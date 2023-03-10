@@ -39,7 +39,7 @@ export default function FirstColumn() {
                <Text as='span' color='#1CA5AE'>Buy, sell</Text> or <Text as='span' color='#1CA5AE'>rent</Text> your properties easily.
           </Heading>
 
-          <Text textAlign={{base: 'center', sm: 'unset'}}>
+          <Text fontSize={'xl'} textAlign={{base: 'center', sm: 'unset'}}>
           A great place to buy, sell and rent your properties. RealEstatery is here to find you an apartment you want, in the region you want and style you want without any commissions.
           </Text>
 

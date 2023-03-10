@@ -14,13 +14,8 @@ export default function MainComponentAction({title, location, price, image}: ISi
         }}
         >
 
-        {/* <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-            {/* Column 1 */}
-
-
-          {/* </SimpleGrid>  */}
             <Stack >
-                <Flex>
+                <Flex align={'center'}>
                     <Image src={image} alt={title}/>
                 </Flex>
                 <Text color='#1CA5AE' fontSize={'2xl'} fontWeight={600}>${price}K</Text>
