@@ -152,7 +152,7 @@ export default function SignInForm() {
 
             <Stack pt={6}>
               <Text align={'center'}>
-                I do not have an account? <Link href={'/auth/sign-in'} color={'#03373A'}>Sign Up</Link>
+                I do not have an account? <Link href={'/auth/sign-up'} color={'#03373A'}>Sign Up</Link>
               </Text>
             </Stack>
           </Box>
