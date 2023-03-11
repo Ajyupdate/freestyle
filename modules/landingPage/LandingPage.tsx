@@ -7,7 +7,7 @@ import Nav from './components/Nav'
 import Subscription from './components/Subscription'
 import WhyChooseUs from './components/WhyChooseUs'
 import Footer from './components/Footer'
-
+import { useLoggedInContext } from '../../component/layout/AuthContext'
 export interface iLandingPage {}
 
 const LandingPage = (props: iLandingPage) => {
@@ -29,6 +29,7 @@ const LandingPage = (props: iLandingPage) => {
   //   }
   // };
   // getUserDetails()
+  
   return (
     <div>
       <Box bg='#F5F5F5'>

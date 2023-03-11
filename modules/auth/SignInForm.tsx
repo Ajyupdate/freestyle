@@ -44,8 +44,7 @@ export default function SignInForm() {
       initialValues={initialValues}
       // validationSchema={validationSchema}
       onSubmit= {({email, password}) => {
-        console.log(email);
-
+        
         const handleSubmit = async() => {
 
         try{
@@ -61,6 +60,7 @@ export default function SignInForm() {
             throw new Error('Login failed')
           }
           const {token} = await response.json()
+          console.log(token)
           localStorage.setItem('token', token)
           router.push('/')
         } catch (error){

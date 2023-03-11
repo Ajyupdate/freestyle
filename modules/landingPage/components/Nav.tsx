@@ -27,6 +27,7 @@ import {
 
 import { CompanyName } from '../../../component/CompanyName';
 import { useEffect, useState } from 'react';
+import { useLoggedInContext } from '../../../component/layout/AuthContext';
 interface NavItem {
   label: string;
   subLabel?: string;
@@ -61,29 +62,38 @@ const NAV_ITEMS: Array<NavItem> = [
 ];
 export default function Nav() {
   const { isOpen, onToggle } = useDisclosure();
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  useEffect(() => {
-    const getUserDetails = async () => {
-    const token = localStorage.getItem('token');
+  const { isLoggedIn } = useLoggedInContext();
+  console.log(isLoggedIn)
+  // useEffect(() => {
+  //   const getUserDetails = async () => {
+  //     const token = localStorage.getItem('token');
+    
   
-    try {
-      const response = await fetch('https://real-estatery.herokuapp.com/seller/get_account', {
-        headers: {
-        }
-      });
-  
-      const user = await response.json();
-      
-      
-      // Do something with the user details...
-    } catch (error) {
-      console.error(error);
-      setIsLoggedIn(false)
-    }
-  };
-  getUserDetails()
-  })
+  //     try {
+  //       const response = await fetch('https://real-estatery.herokuapp.com/seller/get_account', {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`
+  //         }
+  //       });
+    
+  //       const user = await response.json();
+  //       console.log(user.success)
+  //       if(user.success){
+  //         setIsLoggedIn(true)
+  //       }else{
+  //         setIsLoggedIn(false)
+  //       }
+        
+  //       // Do something with the user details...
+  //     } catch (error) {
+  //       console.error(error);
+  //       setIsLoggedIn(false)
+  //     }
+  //   };
+  //   getUserDetails()
+  // })
 
   // useEffect(() => {
   //   const token = localStorage.getItem('token')
