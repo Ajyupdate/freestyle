@@ -19,6 +19,7 @@ import {
   Link,
   Checkbox,
   Center,
+  Container,
 } from "@chakra-ui/react";
 import * as Yup from 'yup'
 
@@ -86,13 +87,14 @@ export default function SignUpForm() {
     >
       {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
         <Form  >
+          {/* <Container width={'100%'}> */}
           <Flex 
           direction={{ base: "column", md: "row" }}
            wrap="wrap" justify="space-between"
-           mx={{md:24, base: 8}}    
+            mx={{md:24, base: 8}}    
            
            >
-            <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
                 placeholder='First Name'
@@ -105,7 +107,7 @@ export default function SignUpForm() {
               <ErrorMessage  name='first_name'/>
             </FormControl>
 
-            <FormControl my={6} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
                 placeholder='Last Name'
@@ -118,7 +120,7 @@ export default function SignUpForm() {
               <ErrorMessage  name='last_name'/>
             </FormControl>
 
-            <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
               size={'lg'}
@@ -131,7 +133,7 @@ export default function SignUpForm() {
               <ErrorMessage  name='email'/>
             </FormControl>  
 
-            <FormControl my={6} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
              
               <Input
                 placeholder='Phone Number'
@@ -146,7 +148,7 @@ export default function SignUpForm() {
 
             
 
-            <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
                 placeholder='Password'
@@ -159,7 +161,7 @@ export default function SignUpForm() {
               <ErrorMessage  name='password'/>
             </FormControl>
 
-            <FormControl my={6} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
                 placeholder='Confirm Password'
@@ -172,7 +174,7 @@ export default function SignUpForm() {
               <ErrorMessage  name='confirmPassword'/>
             </FormControl>
 
-            <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
             <Input
                 placeholder='street'
@@ -185,7 +187,7 @@ export default function SignUpForm() {
               
             </FormControl> 
 
-            <FormControl my={6} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
             {/* <Input
               placeholder='City'
@@ -200,9 +202,9 @@ export default function SignUpForm() {
           </Flex>
           
 
-          <Box>
+          <Box mx={{md:24, base: 8}}>
             
-            <Center my={6}>
+            <Center mb={4}>
               <Checkbox>I would like to receive updates, tips and exciting offers from RealEstatery</Checkbox>
             </Center>
                   
@@ -211,7 +213,7 @@ export default function SignUpForm() {
             <Stack spacing={10} pt={2} flex={1} align='center' >
               <Button
                 onClick={() => handleSubmit()}
-                w={'50%'}
+                w={{base: '100%', md: '50%'}}
                 loadingText="Submitting"
                 size="lg"
                 bg={'green.900'}
@@ -229,7 +231,7 @@ export default function SignUpForm() {
               </Text>
             </Stack>
           </Box>
-          
+          {/* </Container> */}
         </Form>
       )}
     </Formik>

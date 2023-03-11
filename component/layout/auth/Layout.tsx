@@ -8,9 +8,12 @@ export default function Layout({ children }: ILandingPageLayout) {
   return (
     <>
       <Nav /> 
-      <Flex mx={{base: 8}} direction={{md: "column", base: 'column'}} align={'center'} mt={12}>
-        <Heading alignContent={{base:'center'}}>Find Your Dream Home With Us.</Heading>
-        <Text>Welcome to our community.</Text>
+      <Flex mx={{base: 8,}} direction={{md: "column", base: 'column'}} align={'center'} mt={12}>
+        <Heading 
+        fontWeight={'bold'}
+        fontSize={{base: 'xl', md:'2xl'}}
+        alignContent={{base:'center'}}>Find Your Dream Home With Us.</Heading>
+        <Text my={2}>Welcome to our community.</Text>
       </Flex >
       <main>{children}</main>
       
