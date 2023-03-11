@@ -40,7 +40,7 @@ import { useRouter } from 'next/router';
   const NAV_ITEMS: Array<NavItem> = [
     {
       label: 'Home',
-      href: './'
+      href: '/'
     },
     {
       label: 'Rent',
