@@ -15,6 +15,7 @@ import {
   Box,
   Text,
   Link,
+  Container,
 } from "@chakra-ui/react";
 import * as Yup from 'yup'
 import { useRouter } from "next/router";
@@ -81,10 +82,11 @@ export default function SignInForm() {
     >
       {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
         <Form  onSubmit={handleSubmit}>
+          <Container>
           <Flex 
           direction={{ base: "column", md: "column" }}
            wrap="wrap" justify="space-between"
-           mx={{md:24, base: 8}}    
+          //  mx={{md:24, base: 8}}    
            
            >
             
@@ -136,7 +138,7 @@ export default function SignInForm() {
             <Stack spacing={10} pt={2} flex={1} align='center' >
               <Button
                 onClick={() => handleSubmit()}
-                w={'50%'}
+                w={{base: '100%', md: '90%'}}
                 loadingText="Submitting"
                 size="lg"
                 bg={'green.900'}
@@ -144,7 +146,7 @@ export default function SignInForm() {
                 _hover={{
                   bg: 'green.500',
                 }}>
-                Sign up
+                Sign in
               </Button>
             </Stack>
 
@@ -154,7 +156,7 @@ export default function SignInForm() {
               </Text>
             </Stack>
           </Box>
-          
+          </Container>
         </Form>
       )}
     </Formik>
