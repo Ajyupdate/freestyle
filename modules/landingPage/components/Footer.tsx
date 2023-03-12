@@ -47,7 +47,8 @@ export default function Footer() {
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} pl={6} py={10}>
         <SimpleGrid
-          templateColumns={{ base: '1fr 1fr ', sm: '1fr 1fr 1fr 1fr', md: '2fr 1fr 1fr 1fr' }}
+          
+          templateColumns={{ base: ' 1fr 1fr ', sm: '1fr 1fr 1fr 1fr', md: '2fr 1fr 1fr 1fr' }}
           spacing={8}>
           <Stack spacing={6}>
             <Box>
@@ -61,7 +62,7 @@ export default function Footer() {
             </Text>
           </Stack>
 
-          <Stack align={'flex-start'}>
+          <Stack align={'flex-start'} mt={{base: 2, md: 'unset'}}>
             <ListHeader>Company</ListHeader>
             <Link href={'#'}>Blog</Link>
             <Link href={'#'}>Investors</Link>
@@ -75,7 +76,7 @@ export default function Footer() {
             <Link href={'#'}>Rent</Link>
             <Link href={'#'}>Agent</Link>
           </Stack>
-          <Stack align={'flex-start'}>
+          <Stack align={'flex-start'} >
             <ListHeader>Social</ListHeader>
             <Link href={'#'}>Twitter</Link>
             <Link href={'#'}>Instagram</Link>

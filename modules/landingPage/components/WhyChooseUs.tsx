@@ -18,14 +18,15 @@ interface FeatureProps {
 const Feature = ({ title, text, image }: FeatureProps) => {
   return (
     <Stack 
+    
     _hover={{
       boxShadow:'md',
       p: 2
     }}
     >
-      <Center>
+      <Center >
         <Flex
-        
+          
           direction={{ base: 'column', md: 'column' }}
           w={16}
           h={16}
@@ -35,7 +36,7 @@ const Feature = ({ title, text, image }: FeatureProps) => {
           <Image src={image} alt={title}/>
         </Flex>
         </Center>  
-      <Center><Text fontSize={20} fontWeight={ 400} color='#1CA5AE' >{title}</Text></Center>
+      <Center><Text align={'center'} fontSize={20} fontWeight={ 400} color='#1CA5AE' >{title}</Text></Center>
       <Text align={'center'} color={'gray.600'}>{text}</Text>
     </Stack>
   );
@@ -54,7 +55,8 @@ export default function WhyChooseUs() {
         <Text align={'center'}>RealEstatery is committed to helping you reach your satisfaction</Text>
        </Center>
 
-      <SimpleGrid columns={{ base: 1, md: 4 }} spacing={10}>
+      <SimpleGrid    
+      columns={{ base: 2, md: 4 }} spacing={10}>
         <Feature
           image={moneys}
           title={'Best Prices'}
