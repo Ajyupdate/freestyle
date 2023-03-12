@@ -34,13 +34,16 @@ export default function SimpleThreeColumns() {
               
         >
             <Box py={4}>
-                <Heading fontSize='21px' color='#1CA5AE'>Best Choices  </Heading>
-                <Heading fontSize='30px' py={4}>Popular Residencies</Heading>
+                <Heading fontSize='lg' color='#1CA5AE'>Best Choices  </Heading>
+                <Heading fontSize='2xl' py={4}>Popular Residencies</Heading>
             </Box>
 
             <Spacer/>
         
             <Button 
+          
+           
+             rounded={'none'}
              mt={4} 
              leftIcon={<SearchIcon />}  
              colorScheme='teal' bg='#03373A' variant='solid'
@@ -79,6 +82,8 @@ export default function SimpleThreeColumns() {
 
       <Stack align={'center'} mt={4}>
       <Button 
+        rounded={'none'}
+        w={{base: '80%', md: '50%'}} 
         mt={4} 
         leftIcon={<SearchIcon />}  
         colorScheme='teal' bg='#03373A' variant='solid'

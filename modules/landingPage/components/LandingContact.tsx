@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Heading, Spacer, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Spacer, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import contactPic from 'public/contactPic.svg'
 import Image from 'next/image'
@@ -35,12 +35,21 @@ const LandingContact = (props: iLandingPage) => {
                     </Heading>
                 </Box>
                 
-                <Text mt={8} >Is there a problem finding your dream home? Need a guide in buying, selling or renting your first home? 
+                <Text mt={8} align={'center'}>Is there a problem finding your dream home? Need a guide in buying, selling or renting your first home? 
                     Need a consultation on residential issues? Just contact us. We are readily available 24/7.
                 </Text>
-                <Button size='lg' bg='#03373A' color='white' mt='40px' >
+                <Stack align={{base: 'center', md: 'right'}}>
+                <Button 
+                alignContent={'left'}
+                rounded={'none'}
+                w={{base: '80%', md: 'unset'}}
+                size='lg' 
+                bg='#03373A' 
+                color='white' mt='40px' >
                     Message Now
                 </Button>
+                </Stack>
+
             </Box>
            
             

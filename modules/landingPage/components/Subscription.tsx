@@ -1,13 +1,16 @@
-import { Box, Button, Center, Heading, Text } from '@chakra-ui/react'
+import { Box, Button, Center, Container, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 
 export interface iSubscription {}
 
 const Subscription = (iSubscription: iSubscription) => {
   return (
-    <Box bg='#03373A' mx={{base: 6, md:'5%'}} p={8} color='white' mt={20} >
+    
+    
 
-        
+    <Box border="2px"  borderWidth="6px" borderColor="green.100"  mx={{ md:'5%'}}  color='white' mt={20} >
+
+      <Box  bg='#03373A' p={12}>
           <Box >
             <Center>
               <Heading  fontSize='36px' textAlign={'center'} fontWeight='600px'>Subscribe to our newsletter</Heading>
@@ -24,13 +27,17 @@ const Subscription = (iSubscription: iSubscription) => {
           
           <Box pt={8}>
             <Center>
-            <Button width={{base: 'lg', sm: 'unset'}} colorScheme='white' variant='outline'>
+            <Button
+            border="2px"  borderWidth="5px" borderColor="green.100" 
+            rounded={'none'}
+            width={{base: 'lg', sm: 'unset'}}
+             colorScheme='white' variant='outline'>
               Get Started
             </Button>
             </Center>
             
           </Box>
-            
+          </Box>      
       
         
     </Box>

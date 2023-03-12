@@ -1,9 +1,4 @@
 
-
-
-import Image from 'next/image'
-import smallHome from 'public/smallHome.svg'
-import contactPic from 'public/contactPic.svg'
 import {
   Container,
   Stack,
@@ -12,18 +7,23 @@ import {
   Heading,
   Text,
   Button,
-  
+  Image,
   Icon,
   IconButton,
   createIcon,
   IconProps,
   useColorModeValue,
+  Link,
+  useMediaQuery,
 } from '@chakra-ui/react';
 
+
 export default function FirstColumn() {
+  const [isDesktop] = useMediaQuery("(min-width: 768px)");
   return (
-    <Container maxW={'100%'}  px={{base: 6, md:'5%'}}>
+    <Container maxW={'100%'}  px={{ md:'5%'}}>
       <Stack
+        
         align={'center'}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}
@@ -31,15 +31,16 @@ export default function FirstColumn() {
         <Stack flex={1} spacing={{ base: 5, md: 10 }}>
 
           <Heading
-            lineHeight={1.1}
+            lineHeight={{base: 1.5, md: 1}}
             fontWeight={600}
-            textAlign={'left'}
+            mx={{base: 2, md: 'unset'}}
+            textAlign={{md: 'left', base: 'center'}}
             fontSize={{ base: '2xl', sm: '4xl', lg: '6xl' }}>
               Find <Text as ="span" color='#1CA5AE'>Real Estate</Text> that suits you. 
                <Text as='span' color='#1CA5AE'>Buy, sell</Text> or <Text as='span' color='#1CA5AE'>rent</Text> your properties easily.
           </Heading>
 
-          <Text fontSize={'xl'} textAlign={{base: 'center', sm: 'unset'}}>
+          <Text px={{base: 8, md: 'unset'}} fontSize={'xl'} textAlign={{base: 'center', sm: 'unset'}}>
           A great place to buy, sell and rent your properties. RealEstatery is here to find you an apartment you want, in the region you want and style you want without any commissions.
           </Text>
 
@@ -49,7 +50,10 @@ export default function FirstColumn() {
           justify={'center'}
           align={'center'}
           position={'relative'}
-          w={'full'}>
+          w={'full'}
+          px={{base: 8, md: 'unset'}}
+          >
+          
           <Blob
             w={'150%'}
             h={'150%'}
@@ -62,7 +66,7 @@ export default function FirstColumn() {
           <Box
             position={'relative'}
             height={'300px'}
-            rounded={'2xl'}
+      
             boxShadow={'2xl'}
             width={'full'}
             overflow={'hidden'}>
@@ -78,21 +82,16 @@ export default function FirstColumn() {
               top={'50%'}
               transform={'translateX(-50%) translateY(-50%)'}
             />
+            
             <Image
               alt={'Hero Image'}
-              // objectFit="cover"
-              // objectPosition={'50% 50%'}
-              object-fit= "cover"
-              object-position= '50% 50%'
-              // fit={'cover'}
-              // align={'center'}
-              
-              width={1000}
-              height={1000}
-              // p={{base: '24px'}}
+              fit={'cover'}
+              align={'center'}
+              w={'100%'}
+              h={'100%'}
               src={
-                smallHome}
-             
+                '/smallHome.svg'
+              }
             />
           </Box>
         </Flex>
@@ -112,8 +111,10 @@ export default function FirstColumn() {
         position={'relative'}
         zIndex={8}
         direction={{ base: 'column', sm: 'row' }}>
+          
         <Button
-          // rounded={'full'}
+          w={{base: '70%', md: 'unset'}}
+          rounded="none"
           size={'lg'}
           fontWeight={'normal'}
           px={6}
@@ -122,7 +123,11 @@ export default function FirstColumn() {
           _hover={{ bg: 'green.300' }}>
           Browse Properties
         </Button>
-        <Button
+
+        {isDesktop ? (
+          <Button
+          rounded={'none'}
+          borderBottom={'1px'}
           variant='outline'
           size={'lg'}
           fontWeight={'normal'}
@@ -131,13 +136,25 @@ export default function FirstColumn() {
           >
           Enquire Now
         </Button>
+        ): 
+
+        <Link href="">
+          <Box borderBottom="1px" borderBottomColor="black" display="inline-block">
+            <Text fontWeight={'600'}>Enquire Now </Text>
+          </Box>
+        
+        </Link>
+        }
+
+        
+        
           </Stack>
 
       <Box as='hr' color='#03373A'></Box>
 
-      <Box my={4}>
-        <Flex textAlign={'center'} align={'center'} justify={'center'} gap={4}>
-          <Box p={4}>
+      <Box my={4} mx={{base: 12, md: 'unset'}} px={{base: 6, md:'unset'}}>
+        <Flex textAlign={'center'} align={'center'} justify={'center'} gap={{ md: 4}}>
+          <Box p={3}>
             <Heading as='h5' size={'md'}>
               19K+
             </Heading>
@@ -146,7 +163,7 @@ export default function FirstColumn() {
             </Text>
           </Box>
 
-          <Box p={4}>
+          <Box p={3}>
             <Heading as='h5' size={'md'}>
               40m
             </Heading>
@@ -155,7 +172,7 @@ export default function FirstColumn() {
             </Text>
           </Box>
 
-          <Box p={4}>
+          <Box p={3}>
             <Heading as='h5' size={'md'}>
               1K+
             </Heading>
