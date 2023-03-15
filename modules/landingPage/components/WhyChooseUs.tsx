@@ -37,7 +37,7 @@ const Feature = ({ title, text, image }: FeatureProps) => {
         </Flex>
         </Center>  
       <Center><Text align={'center'} fontSize={20} fontWeight={ 400} color='#1CA5AE' >{title}</Text></Center>
-      <Text align={'center'} color={'gray.600'}>{text}</Text>
+      <Center><Text align={'center'} color={'gray.600'}>{text}</Text></Center>
     </Stack>
   );
 };

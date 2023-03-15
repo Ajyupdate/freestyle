@@ -127,7 +127,7 @@ export default function SignInForm() {
 
           <Box mx={{md:24, base: 8}} pr={{md:6}}>
             
-            <Flex color={'green.800'} my={6} justify={'right'}     >
+            <Flex color={'green.800'} mb={8}  justify={'right'}     >
               <Link >
                 Forgot Password?
               </Link>
@@ -138,7 +138,7 @@ export default function SignInForm() {
             <Stack spacing={10} pt={2} flex={1} align='center' >
               <Button
                 onClick={() => handleSubmit()}
-                w={{base: '100%', md: '90%'}}
+                w={{base: '100%', md: '100%'}}
                 loadingText="Submitting"
                 size="lg"
                 bg={'green.900'}

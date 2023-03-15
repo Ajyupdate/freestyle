@@ -1,4 +1,13 @@
-
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Heading,
+} from '@chakra-ui/react'
 import {
   Box,
   Flex,
@@ -61,47 +70,12 @@ const NAV_ITEMS: Array<NavItem> = [
   },
 ];
 export default function Nav() {
-  const { isOpen, onToggle } = useDisclosure();
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const { isOpen, onToggle, } = useDisclosure();
+  
 
   const { isLoggedIn } = useLoggedInContext();
   console.log(isLoggedIn)
-  // useEffect(() => {
-  //   const getUserDetails = async () => {
-  //     const token = localStorage.getItem('token');
-    
   
-  //     try {
-  //       const response = await fetch('https://real-estatery.herokuapp.com/seller/get_account', {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`
-  //         }
-  //       });
-    
-  //       const user = await response.json();
-  //       console.log(user.success)
-  //       if(user.success){
-  //         setIsLoggedIn(true)
-  //       }else{
-  //         setIsLoggedIn(false)
-  //       }
-        
-  //       // Do something with the user details...
-  //     } catch (error) {
-  //       console.error(error);
-  //       setIsLoggedIn(false)
-  //     }
-  //   };
-  //   getUserDetails()
-  // })
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token')
-  //   if(token){
-  //     setIsLoggedIn(true)
-  //     console.log(token)
-  //   }
-  // }, [])
   return (
     <Box   >
       <Flex
@@ -340,7 +314,15 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 
 
 const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
-  
+  const { isOpen, onOpen, onClose } = useDisclosure()
+   function logout(){
+    localStorage.removeItem("token");
+    
+    const token = localStorage.getItem('token');
+    console.log(token)
+    
+   }
+   console.log(isLoggedIn)
   return(
     <Stack
     flex={{ base: 1, md: 0 }}
@@ -349,7 +331,9 @@ const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
     spacing={6}
   >
     {isLoggedIn ?
-    <Link href='auth/sign-out'> <Text fontWeight={500} mt={2}>signOut</Text></Link>
+    <Box onClick={onOpen} cursor="pointer" _hover={{ textDecoration: "underline" }}> 
+      <Text fontWeight={500} mt={2}>signOut</Text>
+    </Box>
     :
     <Link href='auth/sign-in'> <Text fontWeight={500} mt={2}>Login</Text></Link>
     }
@@ -367,6 +351,23 @@ const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
       }}>
       Contact
     </Button>
+    <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Logout?</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Heading>Are you sure you want to log out</Heading>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant='ghost' onClick={logout}>Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
   </Stack> 
 
   )
