@@ -97,6 +97,12 @@ export default function SignUpForm() {
             <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
+                css={{
+                  padding: '35px',
+                  border: "1px solid green;", // apply custom border style
+                  
+                }}
+                rounded={'none'}
                 placeholder='First Name'
                 size={'lg'}
                 name="first_name"
@@ -110,6 +116,12 @@ export default function SignUpForm() {
             <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
+                css={{
+                  padding: '35px',
+                  border: "1px solid  green", // apply custom border style
+                  
+                }}
+                rounded={'none'}
                 placeholder='Last Name'
                 size={'lg'}
                 name="last_name"
@@ -123,7 +135,13 @@ export default function SignUpForm() {
             <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
-              size={'lg'}
+                css={{
+                  padding: '35px',
+                  border: "1px solid  green", // apply custom border style
+                  
+                }}
+                rounded={'none'}
+                size={'lg'}
                 placeholder='Email'
                 type="email"
                 name="email"
@@ -136,6 +154,12 @@ export default function SignUpForm() {
             <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
              
               <Input
+                css={{
+                  padding: '35px',
+                  border: "1px solid  green", // apply custom border style
+                  
+                }}
+                rounded={'none'}
                 placeholder='Phone Number'
                 size={'lg'}
                 type="tel"
@@ -151,6 +175,12 @@ export default function SignUpForm() {
             <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
+                css={{
+                  padding: '35px',
+                  border: "1px solid  green", // apply custom border style
+                  
+                }}
+                rounded={'none'}
                 placeholder='Password'
                 size={'lg'}
                 type="password"
@@ -164,6 +194,12 @@ export default function SignUpForm() {
             <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
+                css={{
+                  padding: '35px',
+                  border: "1px solid  green", // apply custom border style
+                  
+                }}
+                rounded={'none'}
                 placeholder='Confirm Password'
                 size='lg'
                 type="password"
@@ -177,6 +213,12 @@ export default function SignUpForm() {
             <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
             <Input
+                css={{
+                  padding: '35px',
+                  border: "1px solid  green", // apply custom border style
+                  
+                }}
+                rounded={'none'}
                 placeholder='street'
                 size={'lg'}
                 name="street"
@@ -205,13 +247,20 @@ export default function SignUpForm() {
           <Box mx={{md:24, base: 8}}>
             
             <Center mb={4}>
-              <Checkbox>I would like to receive updates, tips and exciting offers from RealEstatery</Checkbox>
+              <Flex justify={'space-between'} gap={2}>
+              <Checkbox size={'lg'} >
+              </Checkbox>
+                <Text mt={{base: 4, md: 'unset'}}>
+                  I would like to receive updates, tips and exciting offers from RealEstatery</Text>
+              </Flex>
+              
             </Center>
                   
             
 
             <Stack spacing={10} pt={2} flex={1} align='center' >
               <Button
+                rounded={'none'}
                 onClick={() => handleSubmit()}
                 w={{base: '100%', md: '50%'}}
                 loadingText="Submitting"

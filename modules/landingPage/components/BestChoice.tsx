@@ -19,7 +19,7 @@ const SingleHome = ({ title, location, price, image }: ISingleHouseProps) => {
         >
         <Image width={100000}  src={image} alt={title}/>
       </Flex>
-      <Text color='#1CA5AE' fontSize={'2xl'} fontWeight={600}>${price}K</Text>
+      <Text color='#1CA5AE' fontSize={'2xl'} fontWeight={300}>${price}K</Text>
       <Text fontSize='30' fontWeight={500}>{title}</Text>
       <Text fontSize='20' fontWeight={500} color={'gray.600'}>{location}</Text>
     </Stack>
@@ -28,13 +28,13 @@ const SingleHome = ({ title, location, price, image }: ISingleHouseProps) => {
 
 export default function SimpleThreeColumns() {
   return (
-    <Box  px={{base: 6, md:'5%'}} mt={12}>
+    <Box  px={{base: 8, md:'5%'}} mt={12}>
     
         <Flex
               
         >
             <Box py={4}>
-                <Heading fontSize='lg' color='#1CA5AE'>Best Choices  </Heading>
+                <Heading fontSize='2xl' fontWeight={300} color='#1CA5AE'>Best Choices  </Heading>
                 <Heading fontSize='2xl' py={4}>Popular Residencies</Heading>
             </Box>
 

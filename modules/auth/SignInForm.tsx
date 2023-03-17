@@ -86,15 +86,21 @@ export default function SignInForm() {
           <Flex 
           direction={{ base: "column", md: "column" }}
            wrap="wrap" justify="space-between"
-          //  mx={{md:24, base: 8}}    
+          mx={{md:24, base: 8}}    
            
            >
             
 
            
-            <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={4} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
+              css={{
+                padding: '35px',
+                border: "1px solid green;", // apply custom border style
+                
+              }}
+              rounded={'none'}
               size={'lg'}
                 placeholder='Email'
                 type="email"
@@ -107,9 +113,15 @@ export default function SignInForm() {
 
             
 
-            <FormControl my={6} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={4} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
               <Input
+              css={{
+                padding: '35px',
+                border: "1px solid green;", // apply custom border style
+                
+              }}
+              rounded={'none'}
                 placeholder='Password'
                 size={'lg'}
                 type="password"
@@ -137,6 +149,7 @@ export default function SignInForm() {
 
             <Stack spacing={10} pt={2} flex={1} align='center' >
               <Button
+                rounded={'none'}
                 onClick={() => handleSubmit()}
                 w={{base: '100%', md: '100%'}}
                 loadingText="Submitting"
