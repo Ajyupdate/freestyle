@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+Input::placeholder {
+    color: black; /* your desired color */
+    
+  }
+
+ 

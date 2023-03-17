@@ -6,7 +6,7 @@ export interface iLandingPage{}
 
 const LandingContact = (props: iLandingPage) => {
   return (
-    <Box mt={24} px={{base: 6, md:'5%'}}>
+    <Box mt={24} px={{base: 8, md:'5%'}}>
       
         <Box 
            marginTop={{ base: '1', sm: '5' }}

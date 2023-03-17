@@ -23,7 +23,7 @@ export default function FirstColumn() {
   return (
     <Container maxW={'100%'}  px={{ md:'5%'}}>
       <Stack
-        
+       
         align={'center'}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}
@@ -33,14 +33,16 @@ export default function FirstColumn() {
           <Heading
             lineHeight={{base: 1.5, md: 1}}
             fontWeight={600}
-            mx={{base: 2, md: 'unset'}}
+            px={4}
+            // px={2}
+            // mx={{base: 2, md: 'unset'}}
             textAlign={{md: 'left', base: 'center'}}
             fontSize={{ base: '2xl', sm: '4xl', lg: '6xl' }}>
               Find <Text as ="span" color='#1CA5AE'>Real Estate</Text> that suits you. 
                <Text as='span' color='#1CA5AE'>Buy, sell</Text> or <Text as='span' color='#1CA5AE'>rent</Text> your properties easily.
           </Heading>
 
-          <Text px={{base: 8, md: 'unset'}} fontSize={'xl'} textAlign={{base: 'center', sm: 'unset'}}>
+          <Text px={{base: 10, md: 'unset'}} fontSize={'xl'} textAlign={{base: 'center', sm: 'unset'}}>
           A great place to buy, sell and rent your properties. RealEstatery is here to find you an apartment you want, in the region you want and style you want without any commissions.
           </Text>
 
@@ -65,7 +67,7 @@ export default function FirstColumn() {
           />
           <Box
             position={'relative'}
-            height={'300px'}
+            height={{base: '200px', md: '300px'}}
       
             boxShadow={'2xl'}
             width={'full'}
