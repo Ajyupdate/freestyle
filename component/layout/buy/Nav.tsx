@@ -8,6 +8,7 @@ import {
     Stack,
     Collapse,
     Icon,
+    Image,
     Link,
     Popover,
     PopoverTrigger,
@@ -28,6 +29,7 @@ import {
   } from '@chakra-ui/icons';
   
   import { CompanyName } from '../../../component/CompanyName';
+
   interface NavItem {
     label: string;
     subLabel?: string;
@@ -111,8 +113,14 @@ import {
               direction={'row'}
               spacing={6}
             >
-              <BellIcon/>
-              <TimeIcon/>
+              <Image
+              alt='icon'
+              src={'notification.png'}
+              />
+              <Image
+              alt='icon'
+              src={'profile.png'}
+              />
             </Stack> 
             </Flex>
          
