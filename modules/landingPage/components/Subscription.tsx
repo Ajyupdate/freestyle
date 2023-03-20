@@ -28,7 +28,7 @@ const Subscription = (iSubscription: iSubscription) => {
           <Box pt={8}>
             <Center>
             <Button
-            border="2px"  borderWidth="5px" borderColor="green.100" 
+            border="2px" p={8} borderWidth="5px" borderColor="green.100" 
             rounded={'none'}
             width={{base: 'lg', sm: 'unset'}}
              colorScheme='white' variant='outline'>
