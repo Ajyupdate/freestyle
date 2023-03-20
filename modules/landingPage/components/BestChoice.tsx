@@ -1,6 +1,6 @@
 
 import { ComponentState, ReactElement } from 'react';
-import { Box, SimpleGrid, Icon, Text, Stack, Flex, Heading, Spacer, Button } from '@chakra-ui/react';
+import { Box, SimpleGrid, Icon, Text, Stack, Flex, Heading, Spacer, Button, createIcon } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
 import { SearchIcon } from '@chakra-ui/icons';
 import Image from 'next/image';
@@ -10,10 +10,11 @@ import sixKHouse from 'public/sixKHouse.png'
 import { ISingleHouseProps } from '../../../component/types/HouseProps';
 
 
+
 const SingleHome = ({ title, location, price, image }: ISingleHouseProps) => {
   return (
     
-    <Stack align={{base: 'center',  }}>
+    <Stack align={{base: 'center',  md:'unset'}}>
       <Flex
         
         >
@@ -82,6 +83,7 @@ export default function SimpleThreeColumns() {
 
       <Stack align={'center'} mt={4}>
       <Button 
+     
         rounded={'none'}
         w={{base: '80%', md: '50%'}} 
         mt={4} 
@@ -92,6 +94,10 @@ export default function SimpleThreeColumns() {
           Search by Location
       </Button>
       </Stack>
+
+
+
+      
       
 
     </Box>
