@@ -20,6 +20,8 @@ import {
 import * as Yup from 'yup'
 import { useRouter } from "next/router";
 
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+
 
 interface ISignInFormProps{
   email: string,
@@ -49,7 +51,7 @@ export default function SignInForm() {
         const handleSubmit = async() => {
 
         try{
-          const response = await fetch("https://real-estatery.herokuapp.com/seller/login", {
+          const response = await fetch(`${API_ENDPOINT}/seller/login`, {
             method: 'POST',
             headers:{
               "Content-Type": "application/json"

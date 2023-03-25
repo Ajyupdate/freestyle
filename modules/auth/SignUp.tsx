@@ -22,16 +22,16 @@ import {
   Container,
 } from "@chakra-ui/react";
 import * as Yup from 'yup'
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 interface ISignUpFormProps{
-  first_name: string,
-  last_name: string,
-  email: string,
-  phone_number: string,
-  // city: string,
-  street: string,
-  password: string,
-  confirmPassword: string,
+  first_name:   string;
+    last_name:    string;
+    email:        string;
+    phone_number: string;
+    street:       string;
+    password:     string;
+   confirmPassword: string,
 
 
 }
@@ -69,7 +69,8 @@ export default function SignUpForm() {
       // validationSchema={validationSchema}
       onSubmit={(values) => {
         const { confirmPassword, ...data } = values;
-        fetch("https://real-estatery.herokuapp.com/seller/signup", {
+        console.log(data)
+        fetch(`${API_ENDPOINT}/seller/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -140,6 +141,7 @@ export default function SignUpForm() {
                   border: "1px solid  green", // apply custom border style
                   
                 }}
+                onBlur={handleBlur('email')}
                 rounded={'none'}
                 size={'lg'}
                 placeholder='Email'
@@ -159,6 +161,7 @@ export default function SignUpForm() {
                   border: "1px solid  green", // apply custom border style
                   
                 }}
+                onBlur={handleBlur('phone_number')}
                 rounded={'none'}
                 placeholder='Phone Number'
                 size={'lg'}
@@ -180,6 +183,7 @@ export default function SignUpForm() {
                   border: "1px solid  green", // apply custom border style
                   
                 }}
+                onBlur={handleBlur('password')}
                 rounded={'none'}
                 placeholder='Password'
                 size={'lg'}
@@ -199,6 +203,8 @@ export default function SignUpForm() {
                   border: "1px solid  green", // apply custom border style
                   
                 }}
+                
+                onBlur={handleBlur('confirmPassword')}
                 rounded={'none'}
                 placeholder='Confirm Password'
                 size='lg'
@@ -218,6 +224,7 @@ export default function SignUpForm() {
                   border: "1px solid  green", // apply custom border style
                   
                 }}
+                onBlur={handleBlur('street')}
                 rounded={'none'}
                 placeholder='street'
                 size={'lg'}

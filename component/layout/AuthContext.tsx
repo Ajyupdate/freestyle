@@ -21,6 +21,7 @@
 //   };
 
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 type LoggedInContextType = {
   isLoggedIn: boolean,
@@ -48,9 +49,12 @@ export const LoggedInProvider = ({ children }: children) => {
     const getUserDetails = async () => {
       const token = localStorage.getItem('token');
     
+      if(!token){
+        console.log(123)
+      }
   
       try {
-        const response = await fetch('https://real-estatery.herokuapp.com/seller/get_account', {
+        const response = await fetch(`${API_ENDPOINT}/seller/get_account`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
