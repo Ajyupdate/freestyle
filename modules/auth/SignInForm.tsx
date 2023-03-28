@@ -50,31 +50,45 @@ export default function SignInForm() {
         
         const handleSubmit = async() => {
 
-        try{
-          const response = await fetch(`${API_ENDPOINT}/seller/login`, {
-            method: 'POST',
-            headers:{
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({email, password}),
-          })
+        // try{
+        //   const response = await fetch(`${API_ENDPOINT}/seller/login`, {
+        //     method: 'POST',
+        //     headers:{
+        //       "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify({email, password}),
+        //   })
 
-          if(!response.ok){
-            throw new Error('Login failed')
-          }
-          const {token} = await response.json()
-          console.log(token)
-          localStorage.setItem('token', token)
-          router.push('/')
-        } catch (error){
-          toast({
-            title: 'Login failed',
-            description: "Please check your credentials and try again",
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-          })
-        }
+        //   if(!response.ok){
+        //    console.log('Login failed')
+        //   }
+        //   const {token} = await response.json()
+        //   console.log(token)
+        //   localStorage.setItem('token', token)
+        //   // router.push('/')
+        //   console.log(response)
+        // } catch (error){
+        
+        //   toast({
+        //     title: 'Login failed',
+        //     description:`${ error}`,
+        //     status: "error",
+        //     duration: 5000,
+        //     isClosable: true,
+        //   })
+        // }
+
+        const response = await fetch(`${API_ENDPOINT}/seller/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
+    
+        const data = await response.json();
+        console.log(data)
+    
 
       }
       handleSubmit()
