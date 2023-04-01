@@ -242,7 +242,7 @@ export default function SignInForm() {
           <Stack>
 
             <Field name="email">
-              {({ field }) => (
+              {({ field }:any) => (
                 <FormControl id="email" isRequired>
                   <FormLabel>Email address</FormLabel>
                   <Input type="email" {...field} />
@@ -251,7 +251,7 @@ export default function SignInForm() {
             </Field>
 
             <Field name="password">
-            {({ field }) => (
+            {({ field }:any) => (
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <Input type="password" {...field} />
