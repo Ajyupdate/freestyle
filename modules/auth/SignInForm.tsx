@@ -3,270 +3,270 @@
 
 
 
-// import * as React from 'react'
-// import { Formik, Form, ErrorMessage } from "formik";
-// import {
-//   FormControl,
-//   useToast,
-//   Input,
-//   Button,
-//   Stack,
-//   Flex,
-//   Box,
-//   Text,
-//   Link,
-//   Container,
-// } from "@chakra-ui/react";
-// import * as Yup from 'yup'
-// import { useRouter } from "next/router";
+import * as React from 'react'
+import { Formik, Form, ErrorMessage } from "formik";
+import {
+  FormControl,
+  useToast,
+  Input,
+  Button,
+  Stack,
+  Flex,
+  Box,
+  Text,
+  Link,
+  Container,
+} from "@chakra-ui/react";
+import * as Yup from 'yup'
+import { useRouter } from "next/router";
 
-// const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 
-// interface ISignInFormProps{
-//   email: string,
-//   password: string,
-// }
-// export default function SignInForm() {
-//   const router = useRouter();
-//   const toast = useToast();
-//   const initialValues:ISignInFormProps  = { 
-//     email: "",
-//     password: "",
-//    };
+interface ISignInFormProps{
+  email: string,
+  password: string,
+}
+export default function SignInForm() {
+  const router = useRouter();
+  const toast = useToast();
+  const initialValues:ISignInFormProps  = { 
+    email: "",
+    password: "",
+   };
 
-//   const validationSchema = Yup.object({
-//     email: Yup.string().email('Invalid email address').required('Required'),
-//     password: Yup.string()
-//     .min(8, 'Password must be at least 8 characters')
-//     .required('Required'),
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Invalid email address').required('Required'),
+    password: Yup.string()
+    .min(8, 'Password must be at least 8 characters')
+    .required('Required'),
   
-//   })
-//   return (
-//     <Formik
-//       initialValues={initialValues}
-//       // validationSchema={validationSchema}
-//       onSubmit= {({email, password}) => {
-//         const postBody = {email, password}
-//         console.log(postBody)
+  })
+  return (
+    <Formik
+      initialValues={initialValues}
+      // validationSchema={validationSchema}
+      onSubmit= {({email, password}) => {
+        const postBody = {email, password}
+        console.log(postBody)
         
-//         const handleSubmit = async() => {
+        const handleSubmit = async() => {
 
-//       //   try{
-//       //     const response = await fetch(`${API_ENDPOINT}/seller/login`, {
-//       //       method: 'POST',
-//       //       headers:{
-//       //         "Content-Type": "application/json"
-//       //       },
-//       //       body: JSON.stringify({email, password}),
-//       //     })
+      //   try{
+      //     const response = await fetch(`${API_ENDPOINT}/seller/login`, {
+      //       method: 'POST',
+      //       headers:{
+      //         "Content-Type": "application/json"
+      //       },
+      //       body: JSON.stringify({email, password}),
+      //     })
 
-//       //     if(!response.ok){
-//       //      console.log('Login failed')
-//       //     }
-//       //     // const {token} = await response.json()
-//       //     // console.log(token)
-//       //     // localStorage.setItem('token', token)
-//       //     // router.push('/')
-//       //     console.log(response)
-//       //   } catch (error){
+      //     if(!response.ok){
+      //      console.log('Login failed')
+      //     }
+      //     // const {token} = await response.json()
+      //     // console.log(token)
+      //     // localStorage.setItem('token', token)
+      //     // router.push('/')
+      //     console.log(response)
+      //   } catch (error){
         
-//       //     toast({
-//       //       title: 'Login failed',
-//       //       description:`${ error}`,
-//       //       status: "error",
-//       //       duration: 5000,
-//       //       isClosable: true,
-//       //     })
-//       //   }
+      //     toast({
+      //       title: 'Login failed',
+      //       description:`${ error}`,
+      //       status: "error",
+      //       duration: 5000,
+      //       isClosable: true,
+      //     })
+      //   }
 
-//         const response = await fetch(`${API_ENDPOINT}/seller/login`, {
-//           method: 'POST',
-//           headers: {
-//             'Content-Type': 'application/json'
-//           },
-//           body: JSON.stringify({ email, password })
-//         });
+        const response = await fetch(`https://real-estate-yjz9.onrender.com/seller/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
     
-//         const data = await response.json();
-//         console.log(data)
+        const data = await response.json();
+        console.log(data)
     
 
-//       }
-//       handleSubmit()
+      }
+      handleSubmit()
 
-//       }}
-//     >
-//       {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
-//         <Form  onSubmit={handleSubmit}>
-//           <Container>
-//           <Flex 
-//           direction={{ base: "column", md: "column" }}
-//            wrap="wrap" justify="space-between"
-//           mx={{md:24, base: 8}}    
+      }}
+    >
+      {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
+        <Form  onSubmit={handleSubmit}>
+          <Container>
+          <Flex 
+          direction={{ base: "column", md: "column" }}
+           wrap="wrap" justify="space-between"
+          mx={{md:24, base: 8}}    
            
-//            >
+           >
             
 
            
-//             <FormControl my={4} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={4} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
-//               <Input
-//               css={{
-//                 padding: '35px',
-//                 border: "1px solid green;", // apply custom border style
+              <Input
+              css={{
+                padding: '35px',
+                border: "1px solid green;", // apply custom border style
                 
-//               }}
-//               rounded={'none'}
-//               size={'lg'}
-//                 placeholder='Email'
-//                 type="email"
-//                 name="email"
-//                 value={values.email}
-//                 onChange={handleChange}
-//               />
-//               <ErrorMessage  name='email'/>
-//             </FormControl>  
+              }}
+              rounded={'none'}
+              size={'lg'}
+                placeholder='Email'
+                type="email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+              />
+              <ErrorMessage  name='email'/>
+            </FormControl>  
 
             
 
-//             <FormControl my={4} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+            <FormControl my={4} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
               
-//               <Input
-//               css={{
-//                 padding: '35px',
-//                 border: "1px solid green;", // apply custom border style
+              <Input
+              css={{
+                padding: '35px',
+                border: "1px solid green;", // apply custom border style
                 
-//               }}
-//               rounded={'none'}
-//                 placeholder='Password'
-//                 size={'lg'}
-//                 type="password"
-//                 name="password"
-//                 value={values.password}
-//                 onChange={handleChange}
-//               />
-//               <ErrorMessage  name='password'/>
-//             </FormControl>
+              }}
+              rounded={'none'}
+                placeholder='Password'
+                size={'lg'}
+                type="password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+              />
+              <ErrorMessage  name='password'/>
+            </FormControl>
 
             
 
-//           </Flex>
+          </Flex>
           
 
-//           <Box mx={{md:24, base: 8}} pr={{md:6}}>
+          <Box mx={{md:24, base: 8}} pr={{md:6}}>
             
-//             <Flex color={'green.800'} mb={8}  justify={'right'}     >
-//               <Link >
-//                 Forgot Password?
-//               </Link>
-//             </Flex>
+            <Flex color={'green.800'} mb={8}  justify={'right'}     >
+              <Link >
+                Forgot Password?
+              </Link>
+            </Flex>
                   
             
 
-//             <Stack spacing={10} pt={2} flex={1} align='center' >
-//               <Button
-//                 rounded={'none'}
-//                 onClick={() => handleSubmit()}
-//                 w={{base: '100%', md: '100%'}}
-//                 loadingText="Submitting"
-//                 size="lg"
-//                 bg={'green.900'}
-//                 color={'white'}
-//                 _hover={{
-//                   bg: 'green.500',
-//                 }}>
-//                 Sign in
-//               </Button>
-//             </Stack>
-
-//             <Stack pt={6}>
-//               <Text align={'center'}>
-//                 I do not have an account? <Link href={'/auth/sign-up'} color={'#03373A'}>Sign Up</Link>
-//               </Text>
-//             </Stack>
-//           </Box>
-//           </Container>
-//         </Form>
-//       )}
-//     </Formik>
-//   );
-// }
-
-
-
-
-
-
-import { useState } from "react";
-import { Box, Button, FormControl, FormLabel, Input, Stack } from "@chakra-ui/react";
-import { Formik, Form, Field } from "formik";
-const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
-
-interface LoginFormValues {
-  email: string;
-  password: string;
-}
-
-interface LoginResponseData {
-  token: string;
-  user: {
-    id: string;
-    name: string;
-    email: string;
-  };
-}
-export default function SignInForm() {
-  const handleSubmit = async (values: LoginFormValues) => {
-    try {
-      const response = await fetch(`${API_ENDPOINT}/seller/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(values)
-      });
-
-      const data:LoginResponseData = await response.json();
-
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  return (
-    <Formik initialValues={{ email: "", password: "" }} onSubmit={handleSubmit}>
-      {() => (
-        <Form>
-          <Stack>
-
-            <Field name="email">
-              {({ field }:any) => (
-                <FormControl id="email" isRequired>
-                  <FormLabel>Email address</FormLabel>
-                  <Input type="email" {...field} />
-                </FormControl>
-              )}
-            </Field>
-
-            <Field name="password">
-            {({ field }:any) => (
-              <FormControl id="password" isRequired>
-                <FormLabel>Password</FormLabel>
-                <Input type="password" {...field} />
-              </FormControl>
-            )}
-            </Field>
-
-            <Button type="submit">Sign In</Button>
+            <Stack spacing={10} pt={2} flex={1} align='center' >
+              <Button
+                rounded={'none'}
+                onClick={() => handleSubmit()}
+                w={{base: '100%', md: '100%'}}
+                loadingText="Submitting"
+                size="lg"
+                bg={'green.900'}
+                color={'white'}
+                _hover={{
+                  bg: 'green.500',
+                }}>
+                Sign in
+              </Button>
             </Stack>
-         
+
+            <Stack pt={6}>
+              <Text align={'center'}>
+                I do not have an account? <Link href={'/auth/sign-up'} color={'#03373A'}>Sign Up</Link>
+              </Text>
+            </Stack>
+          </Box>
+          </Container>
         </Form>
       )}
     </Formik>
   );
 }
+
+
+
+
+
+
+// import { useState } from "react";
+// import { Box, Button, FormControl, FormLabel, Input, Stack } from "@chakra-ui/react";
+// import { Formik, Form, Field } from "formik";
+// const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+
+// interface LoginFormValues {
+//   email: string;
+//   password: string;
+// }
+
+// interface LoginResponseData {
+//   token: string;
+//   user: {
+//     id: string;
+//     name: string;
+//     email: string;
+//   };
+// }
+// export default function SignInForm() {
+//   const handleSubmit = async (values: LoginFormValues) => {
+//     try {
+//       const response = await fetch(`${API_ENDPOINT}/seller/login`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(values)
+//       });
+
+//       const data:LoginResponseData = await response.json();
+
+//       console.log(data);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   return (
+//     <Formik initialValues={{ email: "", password: "" }} onSubmit={handleSubmit}>
+//       {() => (
+//         <Form>
+//           <Stack>
+
+//             <Field name="email">
+//               {({ field }:any) => (
+//                 <FormControl id="email" isRequired>
+//                   <FormLabel>Email address</FormLabel>
+//                   <Input type="email" {...field} />
+//                 </FormControl>
+//               )}
+//             </Field>
+
+//             <Field name="password">
+//             {({ field }:any) => (
+//               <FormControl id="password" isRequired>
+//                 <FormLabel>Password</FormLabel>
+//                 <Input type="password" {...field} />
+//               </FormControl>
+//             )}
+//             </Field>
+
+//             <Button type="submit">Sign In</Button>
+//             </Stack>
+         
+//         </Form>
+//       )}
+//     </Formik>
+//   );
+// }
 
 
 // interface LoginResponse {
@@ -367,7 +367,7 @@ export default function SignInForm() {
 //       "Content-Type": "application/json",
 //     },
 //     body: JSON.stringify(values),
-//   });
+//   }); 
 
 //   const data: LoginResponse = await response.json();
 //   return data;
