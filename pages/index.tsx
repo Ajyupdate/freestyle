@@ -13,12 +13,14 @@ const Home: NextPageWithLayout = () => {
     useEffect(() => {
     const getUserDetails = async () => {
       const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWRkcmVzc19pZCI6OSwiZmlyc3RfbmFtZSI6Im1hcmN1cyIsImxhc3RfbmFtZSI6IlJhc2hmb3JkIiwiZW1haWwiOiJtYXJjdXNAZ21haWwuY29tIiwicGhvbmVfbnVtYmVyIjoiMDgxNzg1NTU0MTEiLCJpbWFnZV91cmwiOm51bGwsImFkZHJlc3NfZGV0YWlscyI6eyJzdHJlZXQiOiJvdGEiLCJjaXR5IjpudWxsLCJzdGF0ZSI6bnVsbCwiY291bnRyeSI6bnVsbCwicG9zdGFsX2NvZGUiOm51bGx9LCJpYXQiOjE2ODAzNzQ1NjAsImV4cCI6MTY4MDM3NTQ2MH0.xw0MrYS24bINcIrK6VX5bAZGpdL-d8-glCX6vItittk'
-    
+    console.log(token)
       
   
       try {
         const response = await fetch(`https://real-estate-yjz9.onrender.com/seller/get_account`, {
           headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
             Authorization: `Bearer ${token}`
            
           }

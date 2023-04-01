@@ -85,7 +85,9 @@ export default function SignInForm() {
         const response = await fetch(`https://real-estate-yjz9.onrender.com/seller/login`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+           
+            "Access-Control-Allow-Origin": "*",
           },
           body: JSON.stringify({ email, password })
         });
