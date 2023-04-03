@@ -35,14 +35,14 @@ const Home: NextPageWithLayout = () => {
       //   console.error(error);
         
       // }
-      fetch(`https://real-estate-yjz9.onrender.com/seller/get_account`, {
+      await fetch(`https://real-estate-yjz9.onrender.com/seller/get_account`, {
       headers: {
         Authorization: `Bearer  ${token}`,
         "Content-Type": "application/json",
       },
     })
-      .then((response) => console.log(response.json()))
-      .then((data) => console.log(data))
+      .then((response) => await console.log(response.json()))
+      .then((data) =>await console.log(data))
       .catch((error) => console.log(error));
 
       
