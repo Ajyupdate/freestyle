@@ -16,39 +16,31 @@ const Home: NextPageWithLayout = () => {
       console.log(token)
       
   
-      // try {
-      //   const response = await fetch(`https://real-estate-yjz9.onrender.com/seller/get_account`, {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       "Access-Control-Allow-Origin": "*",
-      //       Authorization: `Bearer ${token}`
+      try {
+        const response = await fetch(`https://real-estate-yjz9.onrender.com/seller/get_account`, {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${token}`
            
-      //     }
-      //   });
+          }
+        });
+        console.log(response)
     
-      //   const user = await response.json();
-      //   console.log(user)
+        const user = await response.json();
+        console.log(user)
        
         
-      //   // Do something with the user details...
-      // } catch (error) {
-      //   console.error(error);
+        // Do something with the user details...
+      } catch (error) {
+        console.error(error);
         
-      // }
-      await fetch(`https://real-estate-yjz9.onrender.com/seller/get_account`, {
-      headers: {
-        Authorization: `Bearer  ${token}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => await console.log(response.json()))
-      .then((data) =>await console.log(data))
-      .catch((error) => console.log(error));
-
+      }
+      
       
     };
     getUserDetails()
-  })
+  }, [])
   return (
       <div>
         <main>
