@@ -28,6 +28,7 @@ interface ISignInFormProps{
   password: string,
 }
 export default function SignInForm() {
+  console.log(API_ENDPOINT)
   const router = useRouter();
   const toast = useToast();
   const initialValues:ISignInFormProps  = { 
@@ -47,44 +48,52 @@ export default function SignInForm() {
       initialValues={initialValues}
       // validationSchema={validationSchema}
       onSubmit= {({email, password}) => {
+        const postBody = {email, password}
+        console.log(postBody)
         
         const handleSubmit = async() => {
 
-        // try{
-        //   const response = await fetch(`${API_ENDPOINT}/seller/login`, {
-        //     method: 'POST',
-        //     headers:{
-        //       "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify({email, password}),
-        //   })
+      //   try{
+      //     const response = await fetch(`${API_ENDPOINT}/seller/login`, {
+      //       method: 'POST',
+      //       headers:{
+      //         "Content-Type": "application/json"
+      //       },
+      //       body: JSON.stringify({email, password}),
+      //     })
 
-        //   if(!response.ok){
-        //    console.log('Login failed')
-        //   }
-        //   const {token} = await response.json()
-        //   console.log(token)
-        //   localStorage.setItem('token', token)
-        //   // router.push('/')
-        //   console.log(response)
-        // } catch (error){
+      //     if(!response.ok){
+      //      console.log('Login failed')
+      //     }
+      //     // const {token} = await response.json()
+      //     // console.log(token)
+      //     // localStorage.setItem('token', token)
+      //     // router.push('/')
+      //     console.log(response)
+      //   } catch (error){
         
-        //   toast({
-        //     title: 'Login failed',
-        //     description:`${ error}`,
-        //     status: "error",
-        //     duration: 5000,
-        //     isClosable: true,
-        //   })
-        // }
+      //     toast({
+      //       title: 'Login failed',
+      //       description:`${ error}`,
+      //       status: "error",
+      //       duration: 5000,
+      //       isClosable: true,
+      //     })
+      //   }
+
+      
 
         const response = await fetch(`${API_ENDPOINT}/seller/login`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+           
+            "Access-Control-Allow-Origin": "*",
           },
           body: JSON.stringify({ email, password })
+          
         });
+        console.log(response)
     
         const data = await response.json();
         console.log(data)
@@ -92,7 +101,6 @@ export default function SignInForm() {
 
       }
       handleSubmit()
-
 
       }}
     >
@@ -191,3 +199,271 @@ export default function SignInForm() {
     </Formik>
   );
 }
+
+
+
+
+
+
+// import { useState } from "react";
+// import { Box, Button, FormControl, FormLabel, Input, Stack } from "@chakra-ui/react";
+// import { Formik, Form, Field } from "formik";
+// const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+
+// interface LoginFormValues {
+//   email: string;
+//   password: string;
+// }
+
+// interface LoginResponseData {
+//   token: string;
+//   user: {
+//     id: string;
+//     name: string;
+//     email: string;
+//   };
+// }
+// export default function SignInForm() {
+//   const handleSubmit = async (values: LoginFormValues) => {
+//     try {
+//       const response = await fetch(`${API_ENDPOINT}/seller/login`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(values)
+//       });
+
+//       const data:LoginResponseData = await response.json();
+
+//       console.log(data);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   return (
+//     <Formik initialValues={{ email: "", password: "" }} onSubmit={handleSubmit}>
+//       {() => (
+//         <Form>
+//           <Stack>
+
+//             <Field name="email">
+//               {({ field }:any) => (
+//                 <FormControl id="email" isRequired>
+//                   <FormLabel>Email address</FormLabel>
+//                   <Input type="email" {...field} />
+//                 </FormControl>
+//               )}
+//             </Field>
+
+//             <Field name="password">
+//             {({ field }:any) => (
+//               <FormControl id="password" isRequired>
+//                 <FormLabel>Password</FormLabel>
+//                 <Input type="password" {...field} />
+//               </FormControl>
+//             )}
+//             </Field>
+
+//             <Button type="submit">Sign In</Button>
+//             </Stack>
+         
+//         </Form>
+//       )}
+//     </Formik>
+//   );
+// }
+
+
+// interface LoginResponse {
+//   token: string;
+//   user: {
+//     id: number;
+//     name: string;
+//     email: string;
+//   };
+// }
+
+// async function handleSubmit(values: LoginFormValues) {
+//   try {
+//     const response = await fetch("/login", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(values),
+//     });
+
+//     const data: LoginResponse = await response.json();
+
+//     console.log(data);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// // ...
+
+// const [isLoading, setIsLoading] = useState(false);
+
+// return (
+//   <Formik
+//     initialValues={{ email: "", password: "" }}
+//     onSubmit={handleSubmit}
+//     validate={validateLoginForm}
+//   >
+//     {({ handleSubmit, isSubmitting }) => (
+//       <form onSubmit={handleSubmit}>
+//         <FormControl isRequired>
+//           <FormLabel>Email address</FormLabel>
+//           <Input
+//             type="email"
+//             name="email"
+//             placeholder="Enter your email"
+//             disabled={isLoading}
+//           />
+//         </FormControl>
+//         <FormControl isRequired>
+//           <FormLabel>Password</FormLabel>
+//           <Input
+//             type="password"
+//             name="password"
+//             placeholder="Enter your password"
+//             disabled={isLoading}
+//           />
+//         </FormControl>
+//         <Button type="submit" isLoading={isLoading}>
+//           Sign In
+//         </Button>
+//       </form>
+//     )}
+//   </Formik>
+// );
+
+
+
+// import { useState } from "react";
+// import {
+//   FormControl,
+//   FormLabel,
+//   Input,
+//   Button,
+//   useToast,
+// } from "@chakra-ui/react";
+// import { Formik, FormikHelpers } from "formik";
+
+// interface LoginFormValues {
+//   email: string;
+//   password: string;
+// }
+
+// interface LoginResponse {
+//   token: string;
+//   user: {
+//     id: number;
+//     name: string;
+//     email: string;
+//   };
+// }
+
+// async function login(values: LoginFormValues): Promise<LoginResponse> {
+//   const response = await fetch("/login", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(values),
+//   }); 
+
+//   const data: LoginResponse = await response.json();
+//   return data;
+// }
+
+// export default function LoginForm() {
+//   const [isLoading, setIsLoading] = useState(false);
+//   const toast = useToast();
+
+//   async function handleSubmit(
+//     values: LoginFormValues,
+//     actions: FormikHelpers<LoginFormValues>
+//   ) {
+//     setIsLoading(true);
+
+//     try {
+//       const data = await login(values);
+//       console.log(data);
+//       toast({
+//         title: "Login successful",
+//         status: "success",
+//         duration: 5000,
+//         isClosable: true,
+//       });
+//     } catch (error) {
+//       console.error(error);
+//       toast({
+//         title: "Login failed",
+//         status: "error",
+//         description: error.message,
+//         duration: 5000,
+//         isClosable: true,
+//       });
+//     } finally {
+//       setIsLoading(false);
+//       actions.setSubmitting(false);
+//     }
+//   }
+
+//   function validateLoginForm(values: LoginFormValues) {
+//     const errors: Partial<LoginFormValues> = {};
+
+//     if (!values.email) {
+//       errors.email = "Email is required";
+//     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+//       errors.email = "Invalid email format";
+//     }
+
+//     if (!values.password) {
+//       errors.password = "Password is required";
+//     } else if (values.password.length < 6) {
+//       errors.password = "Password must be at least 6 characters long";
+//     }
+
+//     return errors;
+//   }
+
+//   return (
+//     <Formik
+//       initialValues={{ email: "", password: "" }}
+//       onSubmit={handleSubmit}
+//       // validate={validateLoginForm}
+//     >
+//       {({ handleSubmit, isSubmitting }) => (
+//         <form onSubmit={handleSubmit}>
+//           <FormControl isRequired>
+//             <FormLabel>Email address</FormLabel>
+//             <Input
+//               type="email"
+//               name="email"
+//               placeholder="Enter your email"
+//               disabled={isLoading}
+//             />
+//           </FormControl>
+//           <FormControl isRequired>
+//             <FormLabel>Password</FormLabel>
+//             <Input
+//               type="password"
+//               name="password"
+//               placeholder="Enter your password"
+//               disabled={isLoading}
+//             />
+//           </FormControl>
+//           <Button type="submit" isLoading={isLoading}>
+//             Sign In
+//           </Button>
+//         </form>
+//       )}
+//     </Formik>
+//   );
+// }
+
