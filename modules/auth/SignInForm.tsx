@@ -28,6 +28,7 @@ interface ISignInFormProps{
   password: string,
 }
 export default function SignInForm() {
+  console.log(API_ENDPOINT)
   const router = useRouter();
   const toast = useToast();
   const initialValues:ISignInFormProps  = { 
