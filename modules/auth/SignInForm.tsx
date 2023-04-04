@@ -86,7 +86,7 @@ export default function SignInForm() {
         const response = await fetch(`${API_ENDPOINT}seller/login`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/json',
            
             // "Access-Control-Allow-Origin": "*",
           },
