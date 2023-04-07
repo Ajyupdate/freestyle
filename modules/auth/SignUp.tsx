@@ -99,8 +99,8 @@ export default function SignUpForm() {
               
               <Input
                 css={{
-                  padding: '35px',
-                  border: "1px solid green;", // apply custom border style
+                  padding: '30px',
+                  border: "1px solid black;", // apply custom border style
                   
                 }}
                 rounded={'none'}
@@ -118,8 +118,8 @@ export default function SignUpForm() {
               
               <Input
                 css={{
-                  padding: '35px',
-                  border: "1px solid  green", // apply custom border style
+                  padding: '30px',
+                  border: "1px solid  black", // apply custom border style
                   
                 }}
                 rounded={'none'}
@@ -137,8 +137,8 @@ export default function SignUpForm() {
               
               <Input
                 css={{
-                  padding: '35px',
-                  border: "1px solid  green", // apply custom border style
+                  padding: '30px',
+                  border: "1px solid  black", // apply custom border style
                   
                 }}
                 onBlur={handleBlur('email')}
@@ -157,8 +157,8 @@ export default function SignUpForm() {
              
               <Input
                 css={{
-                  padding: '35px',
-                  border: "1px solid  green", // apply custom border style
+                  padding: '30px',
+                  border: "1px solid  black", // apply custom border style
                   
                 }}
                 onBlur={handleBlur('phone_number')}
@@ -179,8 +179,8 @@ export default function SignUpForm() {
               
               <Input
                 css={{
-                  padding: '35px',
-                  border: "1px solid  green", // apply custom border style
+                  padding: '30px',
+                  border: "1px solid  black", // apply custom border style
                   
                 }}
                 onBlur={handleBlur('password')}
@@ -199,8 +199,8 @@ export default function SignUpForm() {
               
               <Input
                 css={{
-                  padding: '35px',
-                  border: "1px solid  green", // apply custom border style
+                  padding: '30px',
+                  border: "1px solid  black", // apply custom border style
                   
                 }}
                 
@@ -220,8 +220,8 @@ export default function SignUpForm() {
               
             <Input
                 css={{
-                  padding: '35px',
-                  border: "1px solid  green", // apply custom border style
+                  padding: '30px',
+                  border: "1px solid  black", // apply custom border style
                   
                 }}
                 onBlur={handleBlur('street')}
@@ -251,10 +251,10 @@ export default function SignUpForm() {
           </Flex>
           
 
-          <Box mx={{md:24, base: 8}}>
+          <Box >
             
-            <Center mb={4}>
-              <Flex justify={'space-between'} gap={2}>
+            <Center mb={4} >
+              <Flex justify={'space-between'} gap={2} mx={8}>
               <Checkbox size={'lg'} >
               </Checkbox>
                 <Text mt={{base: 4, md: 'unset'}}>
@@ -265,11 +265,12 @@ export default function SignUpForm() {
                   
             
 
-            <Stack spacing={10} pt={2} flex={1} align='center' >
+            <Flex mx={{md:'unset', base: 8}} justify="center" pt={2} align='center' >
               <Button
+              w={{base: '100%', md:"60%"}} mx={2}
                 rounded={'none'}
                 onClick={() => handleSubmit()}
-                w={{base: '100%', md: '50%'}}
+                // w={{base: '100%', md: '100%'}}
                 loadingText="Submitting"
                 size="lg"
                 bg={'green.900'}
@@ -279,11 +280,12 @@ export default function SignUpForm() {
                 }}>
                 Sign up
               </Button>
-            </Stack>
+            </Flex>
 
+            
             <Stack pt={6}>
-              <Text align={'center'}>
-                Already have an account? <Link href={'/auth/sign-in'} color={'#03373A'}>Login</Link>
+              <Text align={'center'} color='green.900' fontWeight={900}>
+                Already have an account?  <Link href={'/auth/sign-up'} fontWeight={'extrabold'} color={'#03373A'}>Login</Link>
               </Text>
             </Stack>
           </Box>

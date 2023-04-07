@@ -17,6 +17,7 @@ import {
     useDisclosure,
     Spacer,
     Select,
+    Heading,
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
@@ -61,6 +62,9 @@ import { useRouter } from 'next/router';
   ];
   export default function Nav() {
     const { isOpen, onToggle } = useDisclosure();
+    const router = useRouter()
+   console.log(router.route)
+    
     
     return (
       <Box   >
@@ -68,7 +72,7 @@ import { useRouter } from 'next/router';
           
           minH={'60px'}
           py={{ base: 2 }}
-          px={{base: 6, md:16}}
+          mx={{base: 6, md:24}}
           mt={8}
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.900')}
@@ -85,7 +89,7 @@ import { useRouter } from 'next/router';
           </Flex>
   
   
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Flex display={{ base: 'none', md: 'flex' }} pl={8} ml={20} >
             <DesktopNav />
           </Flex>
           <Spacer/>
@@ -127,11 +131,11 @@ import { useRouter } from 'next/router';
       <Stack direction={'row'} spacing={4}>
         
         {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
+          <Box key={navItem.label}  ml={28}>
             <Popover trigger={'hover'} placement={'bottom-start'}>
               <PopoverTrigger>
                 <Link
-                  p={2}
+                  p={8}
                   href={navItem.href ?? '#'}
                   fontSize={'sm'}
                   fontWeight={500}
@@ -144,8 +148,10 @@ import { useRouter } from 'next/router';
                     borderBottom:"2px dashed blue"
                   }}
                   >
+                    <Heading  whiteSpace="nowrap" fontStyle={'normal'} color={'#011213'} fontWeight={500} fontSize={15} >
+                    {navItem.label}
+                    </Heading>
                   
-                  {navItem.label}
                 </Link>
               </PopoverTrigger>
   
@@ -303,12 +309,12 @@ import { useRouter } from 'next/router';
   const SelectAndContact = () => {
     
     const router = useRouter()
-    const status = router.route === '/auth/login' ?  'Login' : 'SIgnIn'
+    const status = router.route === '/auth/login' ?  'sign-up' : 'sign in'
     function handleNavPush(){
-      if(status === 'Login'){
+      if(status === 'sign-up'){
         router.push('/auth/sign-in')
       }else{
-        router.push('/auth/login')
+        router.push('/auth/sign-up')
       }
     }
     return(
@@ -317,12 +323,22 @@ import { useRouter } from 'next/router';
       justify={'flex-end'}
       direction={'row'}
       spacing={6}
+      
     >
-      <Link onClick={() => handleNavPush()}> <Text fontWeight={500} mt={2}>{status}</Text></Link>
+    
+      
+     <Link onClick={() => handleNavPush()}> 
+      <Heading mt={2}
      
+       as={'h5'} whiteSpace="nowrap" fontWeight={600} fontSize={16}>{status}</Heading>
+     </Link>
+     
+  
       
   
       <Button
+        
+        rounded={'none'}
         display={{ base: 'none', md: 'inline-flex' }}
         fontSize={'sm'}
         fontWeight={600}
