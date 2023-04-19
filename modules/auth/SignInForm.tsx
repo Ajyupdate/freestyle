@@ -46,7 +46,7 @@ export default function SignInForm() {
 
         const handleSubmit = async () => {
           try {
-            const response = await fetch(`${API_ENDPOINT}/seller/login`, {
+            const response = await fetch(`${API_ENDPOINT}seller/login`, {
               method: "POST",
               body: JSON.stringify({ email, password }),
             });
@@ -58,8 +58,9 @@ export default function SignInForm() {
             // console.log(token)
             // localStorage.setItem('token', token)
             // router.push('/')
-            console.log(response);
+           
           } catch (error) {
+            console.log(error)
             toast({
               title: "Login failed",
               description: `${error}`,
@@ -69,18 +70,18 @@ export default function SignInForm() {
             });
           }
 
-          const response = await fetch(`${API_ENDPOINT}seller/login`, {
-            method: "POST",
-            headers: {
-              // 'Content-Type': 'application/json',
-              // "Access-Control-Allow-Origin": "*",
-            },
-            body: JSON.stringify({ email, password }),
-          });
-          console.log(response);
+          // const response = await fetch(`${API_ENDPOINT}seller/login`, {
+          //   method: "POST",
+          //   headers: {
+          //     // 'Content-Type': 'application/json',
+          //     // "Access-Control-Allow-Origin": "*",
+          //   },
+          //   body: JSON.stringify({ email, password }),
+          // });
+          // // console.log(response);
 
-          const data = await response.json();
-          console.log(data);
+          // const data = await response.json();
+          // console.log(data);
         };
         handleSubmit();
       }}
