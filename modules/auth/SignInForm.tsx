@@ -211,7 +211,7 @@ function LoginForm() {
 
     const response = await fetch("https://real-estate-yjz9.onrender.com/seller/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Access-Control-Allow-Origin': '*'},
       body: JSON.stringify({ email, password })
     });
 
@@ -223,7 +223,7 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit}>
       <FormControl id="email" isRequired>
-        <FormLabel>Email address</FormLabel>
+        <FormLabel>Emaill address</FormLabel>
         <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </FormControl>
       <FormControl id="password" isRequired>
