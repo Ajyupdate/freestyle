@@ -70,7 +70,7 @@ export default function SignUpForm() {
       onSubmit={(values) => {
         const { confirmPassword, ...data } = values;
         console.log(data)
-        fetch(`${API_ENDPOINT}/seller/signup`, {
+        fetch(`${API_ENDPOINT}seller/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
