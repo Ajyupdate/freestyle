@@ -33,7 +33,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-
+import { useRouter } from 'next/router';
 import { CompanyName } from '../../../component/CompanyName';
 import { useEffect, useState } from 'react';
 import { useLoggedInContext } from '../../../component/layout/AuthContext';
@@ -72,7 +72,6 @@ const NAV_ITEMS: Array<NavItem> = [
 export default function Nav() {
   const { isOpen, onToggle, } = useDisclosure();
   
-
   const { isLoggedIn } = useLoggedInContext();
   console.log(isLoggedIn)
   
@@ -137,6 +136,8 @@ const DesktopNav = () => {
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
+  const router = useRouter()
+  const path = (router.route)
   return (
     <Stack direction={'row'} spacing={4}>
       
@@ -145,6 +146,7 @@ const DesktopNav = () => {
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Link
+
                 p={2}
                 href={navItem.href ?? '#'}
                 fontSize={'sm'}
@@ -160,6 +162,13 @@ const DesktopNav = () => {
                 >
                 
                 {navItem.label}
+                {'.'+`${path}` === navItem.href ? <Box
+                    bg="black"
+                    marginLeft={4}
+                    borderRadius="50%"
+                    width="15px"
+                    height="15px"
+                  /> : ''}
               </Link>
             </PopoverTrigger>
 

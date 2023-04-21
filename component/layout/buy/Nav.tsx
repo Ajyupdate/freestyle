@@ -18,6 +18,7 @@ import {
     useDisclosure,
     Spacer,
     Select,
+    Container,
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
@@ -27,7 +28,7 @@ import {
     BellIcon,
     TimeIcon,
   } from '@chakra-ui/icons';
-  
+  import { useRouter } from 'next/dist/client/router';
   import { CompanyName } from '../../../component/CompanyName';
 
   interface NavItem {
@@ -141,6 +142,8 @@ import {
     const linkHoverColor = useColorModeValue('gray.800', 'white');
     const popoverContentBgColor = useColorModeValue('white', 'gray.800');
   
+    const router = useRouter()
+    const path = (router.route)
     return (
       <Stack direction={'row'} spacing={4}>
         
@@ -163,7 +166,15 @@ import {
                   }}
                   >
                   
-                  {navItem.label}
+                  {navItem.label} 
+                  {'.'+`${path}` === navItem.href ? <Box
+                    bg="black"
+                    marginLeft={4}
+                    borderRadius="50%"
+                    width="15px"
+                    height="15px"
+                  /> : ''}
+                 
                 </Link>
               </PopoverTrigger>
   
