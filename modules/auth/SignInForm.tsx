@@ -207,12 +207,20 @@ function LoginForm() {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e:any) => {
+   let payload ={
+    email: email,
+    password: password
+   }
+   console.log((payload))
     e.preventDefault();
 
     const response = await fetch("https://real-estate-yjz9.onrender.com/seller/login", {
       method: "POST",
-      headers: { 'Access-Control-Allow-Origin': '*'},
-      body: JSON.stringify({ email, password })
+      headers: { 'Access-Control-Allow-Origin': '*',
+                  'Content-type': "application/json"
+    },
+      body: JSON.stringify(payload)
+     
     });
 
     const data = await response.json();
