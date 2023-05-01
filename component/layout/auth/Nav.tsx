@@ -63,7 +63,7 @@ import { useRouter } from 'next/router';
   export default function Nav() {
     const { isOpen, onToggle } = useDisclosure();
     const router = useRouter()
-   console.log(router.route)
+  
     
     
     return (
