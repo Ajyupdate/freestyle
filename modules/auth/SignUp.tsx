@@ -1,8 +1,4 @@
 
-
-
-
-
 import * as React from 'react'
 import { Formik, Form, ErrorMessage } from "formik";
 import {
@@ -22,7 +18,9 @@ import {
   Container,
 } from "@chakra-ui/react";
 import * as Yup from 'yup'
+import { useRouter } from 'next/router';
 const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+
 
 interface ISignUpFormProps{
   first_name:   string;
@@ -36,6 +34,7 @@ interface ISignUpFormProps{
 
 }
 export default function SignUpForm() {
+  const router = useRouter()
   const initialValues:ISignUpFormProps  = { 
     first_name: '',
     last_name: "",
@@ -80,6 +79,8 @@ export default function SignUpForm() {
           .then((response) => response.json())
           .then((data) => {
             console.log("Success:", data);
+            router.push('/auth/sign-in')
+            
           })
           .catch((error) => {
             console.error("Error:", error);
@@ -285,7 +286,7 @@ export default function SignUpForm() {
             
             <Stack pt={6}>
               <Text align={'center'} color='green.900' fontWeight={900}>
-                Already have an account?  <Link href={'/auth/sign-up'} fontWeight={'extrabold'} color={'#03373A'}>Login</Link>
+                Already have an account?  <Link href={'/auth/sign-in'} fontWeight={'extrabold'} color={'#03373A'}>Login</Link>
               </Text>
             </Stack>
           </Box>
