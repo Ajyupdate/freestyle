@@ -33,6 +33,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { CompanyName } from '../../../component/CompanyName';
 import { useEffect, useState } from 'react';
@@ -71,10 +72,10 @@ const NAV_ITEMS: Array<NavItem> = [
 ];
 export default function Nav() {
   const { isOpen, onToggle, } = useDisclosure();
-  
+  const {data:session, status} = useSession()
   const { isLoggedIn } = useLoggedInContext();
-  console.log(isLoggedIn)
-  
+  // console.log(isLoggedIn)
+  // console.log(session)
   return (
     <Box   >
       <Flex
@@ -323,6 +324,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 
 
 const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
+  const {data:session, status} = useSession()
+  console.log(status)
+  console.log(session)
   const { isOpen, onOpen, onClose } = useDisclosure()
    function logout(){
     localStorage.removeItem("token");
@@ -331,7 +335,7 @@ const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
     console.log(token)
     
    }
-   console.log(isLoggedIn)
+  //  console.log(isLoggedIn)
   return(
     <Stack
     flex={{ base: 1, md: 0 }}
@@ -339,14 +343,22 @@ const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
     direction={'row'}
     spacing={6}
   >
-    {isLoggedIn ?
+    {/* {isLoggedIn ?
     <Box onClick={onOpen} cursor="pointer" _hover={{ textDecoration: "underline" }}> 
       <Text fontWeight={500} mt={2}>signOut</Text>
     </Box>
     :
     <Link href='auth/sign-in'> <Text fontWeight={500} mt={2}>Login</Text></Link>
-    }
-    
+    } */}
+
+    {session?.user ? (
+      <>
+      <p>{session.user.name}</p>
+      <button onClick={() => signOut()}>Sign Out</button>
+      </>
+    ): (
+      <button onClick={() => signIn()}>Sign in</button>
+    )}
 
     <Button
       // display={{ base: 'none', md: 'inline-flex' }}

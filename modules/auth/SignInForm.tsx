@@ -1,5 +1,7 @@
+
 import * as React from "react";
 import { Formik, Form, ErrorMessage } from "formik";
+import { useSession, signIn, signOut } from "next-auth/react"
 import {
   FormControl,
   useToast,
@@ -14,6 +16,9 @@ import {
 } from "@chakra-ui/react";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies
 
 const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
@@ -22,7 +27,10 @@ interface ISignInFormProps {
   password: string;
 }
 export default function SignInForm() {
-  console.log(API_ENDPOINT);
+  const [login, setLogin] = React.useState(false);
+  // const { data: session } = useSession()
+  // console.log(session)
+  
   const router = useRouter();
   const toast = useToast();
   const initialValues: ISignInFormProps = {
@@ -40,54 +48,60 @@ export default function SignInForm() {
     <Formik
       initialValues={initialValues}
       // validationSchema={validationSchema}
-      onSubmit={({ email, password }) => {
-        const postBody = { email, password };
-        console.log(postBody);
+      onSubmit={async({ email, password }) => {
+        const result = await signIn("credentials", {
+          email: email,
+          password: password,
+          redirect: true,
+          callbackUrl: "/",
+        })
 
-        const handleSubmit = async () => {
-          try {
-            const response = await fetch(`${API_ENDPOINT}seller/login`, {
-              method: "POST",
-                    headers: { 'Access-Control-Allow-Origin': '*',
-                  'Content-type': "application/json"
-              },
-              body: JSON.stringify({ email, password }),
-            });
-            console.log(response)
 
-            if (!response.ok) {
-              console.log("Login failed");
-            }
-            const {token} = await response.json()
-            console.log(token)
-            // localStorage.setItem('token', token)
-            // router.push('/')
+
+        // const postBody = { email, password };
+        // console.log(postBody);
+
+        // const handleSubmit = async () => {
+        //   try {
+        //     const response = await fetch(`${API_ENDPOINT}seller/login`, {
+        //       method: "POST",
+        //             headers: { 'Access-Control-Allow-Origin': '*',
+        //           'Content-type': "application/json"
+        //       },
+        //       body: JSON.stringify({ email, password }),
+        //     });
+        //     console.log(response)
+
+        //     if (!response.ok) {
+        //       console.log("Login failed");
+        //     }
+        //     if(response.ok){
+        //       const {token} = await response.json()
+        //       console.log(token)
+        //       setLogin(true)
+        //       // cookies.set('token',token, {
+        //       //   path: '/',
+        //       // } )
+        //        router.push('/')
+        //     localStorage.setItem('token', token)
+        //     // router.push('/')
+        //     }
+            
            
-          } catch (error) {
-            console.log(error)
-            toast({
-              title: "Login failed",
-              description: `${error}`,
-              status: "error",
-              duration: 5000,
-              isClosable: true,
-            });
-          }
+        //   } catch (error) {
+        //     console.log(error)
+        //     toast({
+        //       title: "Login failed",
+        //       description: `${error}`,
+        //       status: "error",
+        //       duration: 5000,
+        //       isClosable: true,
+        //     });
+        //   }
 
-          // const response = await fetch(`${API_ENDPOINT}seller/login`, {
-          //   method: "POST",
-          //   headers: {
-          //     // 'Content-Type': 'application/json',
-          //     // "Access-Control-Allow-Origin": "*",
-          //   },
-          //   body: JSON.stringify({ email, password }),
-          // });
-          // // console.log(response);
-
-          // const data = await response.json();
-          // console.log(data);
-        };
-        handleSubmit();
+          
+        // };
+        // handleSubmit();
       }}
     >
       {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
@@ -153,6 +167,7 @@ export default function SignInForm() {
                 mb={8}
                 justify={"right"}
               >
+                
                 <Link fontWeight={900} mr={{ md: "15%" }}>
                   Forgot Password?
                 </Link>
@@ -194,6 +209,7 @@ export default function SignInForm() {
                   </Link>
                 </Text>
               </Stack>
+              
             </Box>
           </Box>
         </Form>
@@ -201,6 +217,7 @@ export default function SignInForm() {
     </Formik>
   );
 }
+
 
 
 // import { useState } from "react";
@@ -248,4 +265,6 @@ export default function SignInForm() {
 // }
 
 // export default LoginForm;
+
+
 
