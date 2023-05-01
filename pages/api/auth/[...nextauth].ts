@@ -149,6 +149,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+secret: "catchmeifyoucan",
 
   callbacks: {
     async jwt({ token, user }) {
