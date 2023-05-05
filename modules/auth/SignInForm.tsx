@@ -18,6 +18,7 @@ import * as Yup from "yup";
 import { useRouter } from "next/router";
 import Cookies from "universal-cookie";
 
+
 const cookies = new Cookies
 
 const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
@@ -28,6 +29,7 @@ interface ISignInFormProps {
 }
 export default function SignInForm() {
   const [login, setLogin] = React.useState(false);
+ 
   // const { data: session } = useSession()
   // console.log(session)
   
@@ -52,9 +54,27 @@ export default function SignInForm() {
         const result = await signIn("credentials", {
           email: email,
           password: password,
-          redirect: true,
-          callbackUrl: "/",
+          redirect: false,
+          // callbackUrl: "/",
         })
+        if(result?.ok ){
+          router.push('/')
+          toast({
+            title: 'Succesful Login',
+            description: "Login Successful",
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          })
+        }else{
+          toast({
+            title: 'Failed Login',
+            description: "Incorrect username or password",
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          })
+        }
 
 
 

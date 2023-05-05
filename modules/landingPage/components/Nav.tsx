@@ -325,7 +325,8 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 
 const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
   const {data:session, status} = useSession()
-  console.log(status)
+  
+  
   console.log(session)
   const { isOpen, onOpen, onClose } = useDisclosure()
    function logout(){
@@ -353,7 +354,7 @@ const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
 
     {session?.user ? (
       <>
-      <p>{session.user.name}</p>
+      {/* <p>{session.user.message}</p> */}
       <button onClick={() => signOut()}>Sign Out</button>
       </>
     ): (
