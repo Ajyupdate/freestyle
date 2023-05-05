@@ -16,6 +16,7 @@ import {
   Checkbox,
   Center,
   Container,
+  useToast
 } from "@chakra-ui/react";
 import * as Yup from 'yup'
 import { useRouter } from 'next/router';
@@ -34,6 +35,7 @@ interface ISignUpFormProps{
 
 }
 export default function SignUpForm() {
+  const toast = useToast()
   const router = useRouter()
   const initialValues:ISignUpFormProps  = { 
     first_name: '',
@@ -80,10 +82,24 @@ export default function SignUpForm() {
           .then((data) => {
             console.log("Success:", data);
             router.push('/auth/sign-in')
+            toast({
+              title: 'Account created',
+              description:`account succesfully created`,
+              status: 'success',
+              duration: 9000,
+              isClosable: true,
+            })
             
           })
           .catch((error) => {
             console.error("Error:", error);
+            toast({
+              title: 'Failed Login',
+              description:`${error}`,
+              status: 'error',
+              duration: 9000,
+              isClosable: true,
+            })
           });
       }}
     >
