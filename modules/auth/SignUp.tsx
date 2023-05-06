@@ -51,10 +51,10 @@ export default function SignUpForm() {
    };
 
   const validationSchema = Yup.object({
-    first_name: Yup.string().max(15, 'must not exceed 15 character').required(),
-    last_name: Yup.string().max(15, 'must not exceed 15 character').required(),
-    email: Yup.string().email('Invalid email address').required(),
-    phone_number: Yup.number().min(11, 'must not be less than 11').required(),
+    first_name: Yup.string().max(15, 'must not exceed 15 character').required("First name is required"),
+    last_name: Yup.string().max(15, 'must not exceed 15 character').required("Last name is required"),
+    email: Yup.string().email('Invalid email address').required("email is required"),
+    phone_number: Yup.number().min(11, 'must not be less than 11').required("Phone numeber is required"),
     // city: Yup.string().required(),
     // street: Yup.string().required(),
     password: Yup.string()
@@ -67,7 +67,7 @@ export default function SignUpForm() {
   return (
     <Formik
       initialValues={initialValues}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
       onSubmit={(values) => {
         const { confirmPassword, ...data } = values;
         console.log(data)
@@ -80,15 +80,27 @@ export default function SignUpForm() {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log("Success:", data);
-            router.push('/auth/sign-in')
-            toast({
-              title: 'Account created',
-              description:`account succesfully created`,
-              status: 'success',
-              duration: 9000,
-              isClosable: true,
-            })
+            if(data.success){
+              console.log("Success:", data);
+              router.push('/auth/sign-in')
+              toast({
+                title: 'Account created',
+                description:`account succesfully created`,
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
+            }else {
+              console.log(data)
+              toast({
+                title: 'Failed',
+                description:`${data.message}`,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              })
+            }
+            
             
           })
           .catch((error) => {
@@ -128,7 +140,9 @@ export default function SignUpForm() {
                 onChange={handleChange}
                 onBlur={handleBlur('first_name')}
               />
-              <ErrorMessage  name='first_name'/>
+              <Box mt={2} color="red.500" fontSize="sm">
+                <ErrorMessage name="first_name" />
+              </Box>
             </FormControl>
 
             <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
@@ -147,7 +161,9 @@ export default function SignUpForm() {
                 onChange={handleChange}
                 onBlur={handleBlur('last_name')}
               />
-              <ErrorMessage  name='last_name'/>
+             <Box mt={2} color="red.500" fontSize="sm">
+                <ErrorMessage name="last_name" />
+              </Box>
             </FormControl>
 
             <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
@@ -167,7 +183,9 @@ export default function SignUpForm() {
                 value={values.email}
                 onChange={handleChange}
               />
-              <ErrorMessage  name='email'/>
+              <Box mt={2} color="red.500" fontSize="sm">
+                <ErrorMessage name="email" />
+              </Box>
             </FormControl>  
 
             <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
@@ -187,7 +205,9 @@ export default function SignUpForm() {
                 value={values.phone_number}
                 onChange={handleChange}
               />
-              <ErrorMessage  name='phone_number'/>
+              <Box mt={2} color="red.500" fontSize="sm">
+                <ErrorMessage name="phone_number" />
+              </Box>
             </FormControl>
 
             
@@ -209,7 +229,9 @@ export default function SignUpForm() {
                 value={values.password}
                 onChange={handleChange}
               />
-              <ErrorMessage  name='password'/>
+               <Box mt={2} color="red.500" fontSize="sm">
+                <ErrorMessage name="password" />
+              </Box>
             </FormControl>
 
             <FormControl my={3} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
@@ -230,7 +252,9 @@ export default function SignUpForm() {
                 value={values.confirmPassword}
                 onChange={handleChange}
               />
-              <ErrorMessage  name='confirmPassword'/>
+               <Box mt={2} color="red.500" fontSize="sm">
+                <ErrorMessage name="confirmPassword" />
+              </Box>
             </FormControl>
 
             <FormControl my={3} pr={{md:6}} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
