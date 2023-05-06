@@ -99,7 +99,7 @@ export default function Nav() {
         </Flex>
 
 
-        <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+        <Flex mt={8} display={{ base: 'none', md: 'flex' }} ml={10}>
           <DesktopNav />
         </Flex>
         <Spacer/>
@@ -140,14 +140,14 @@ const DesktopNav = () => {
   const router = useRouter()
   const path = (router.route)
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={'row'} spacing={4 }>
       
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
+        <Box key={navItem.label} >
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Link
-
+              
                 p={2}
                 href={navItem.href ?? '#'}
                 fontSize={'sm'}
@@ -204,6 +204,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       role={'group'}
       display={'block'}
       p={2}
+      
       rounded={'md'}
       _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
       <Stack direction={'row'} align={'center'}>
