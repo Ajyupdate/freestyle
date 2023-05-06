@@ -17,6 +17,7 @@ import {
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 import Cookies from "universal-cookie";
+import MyButton, { SubmittingButton } from "../../utils/button";
 
 
 const cookies = new Cookies
@@ -160,39 +161,16 @@ export default function SignInForm() {
                 </Link>
               </Flex>
 
-              <Flex
-                mx={{ md: "unset", base: 8 }}
-                justify="center"
-                pt={2}
-                align="center"
-              >
-                {!isLoading ? (
-                  <Button
-                  w={{ base: "100%", md: "60%" }}
-                  mx={2}
-                  rounded={"none"}
-                  onClick={() => handleSubmit()}
-                  // w={{base: '100%', md: '100%'}}
-                  loadingText="Submitting"
-                  size="lg"
-                  bg={"green.900"}
-                  color={"white"}
-                  _hover={{
-                    bg: "green.500",
-                  }}
-                >
-                  LogIn
-                </Button>
-                ) :
-                (<Button
-                  isLoading
-                  loadingText='Submitting'
-                  colorScheme='teal'
-                  variant='outline'
-                
-                />)
-                }
-              </Flex>
+              <>
+                  {!isLoading ? (
+                    <MyButton buttonText={'sign in'} handleSubmit={handleSubmit}/>
+                    ) :
+                    (
+                      <SubmittingButton/>
+                    )
+                  }
+              </>
+
 
               <Stack pt={6}>
                 <Text align={"center"} color="green.900" fontWeight={900}>
