@@ -323,7 +323,7 @@ export default function SignUpForm() {
 
               
             </>
-            <MyButton children={'sign up'} handleSubmit={handleSubmit}/>
+            {/* <MyButton children={'sign up'} handleSubmit={handleSubmit}/> */}
             
             <Stack pt={6}>
               <Text align={'center'} color='green.900' fontWeight={900}>
