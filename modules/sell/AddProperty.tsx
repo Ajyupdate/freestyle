@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import usePost from "../../hooks/usePost";
 import { Country, State, City }  from 'country-state-city';
+// import { getCountries, getStates, getCities } from 'country-state-city';
 
 const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 const url = `${API_ENDPOINT}/property/put_property_for_sale}`
@@ -20,24 +21,25 @@ const url = `${API_ENDPOINT}/property/put_property_for_sale}`
 const PropertyForm = () => {
 
   let countryData = Country.getAllCountries();
+  const [stateData, setStateData] = useState();
+  const [cityData, setCityData] = useState();
+
   const [country, setCountry] = useState(countryData[0]);
-  const [targetCountry, setTargetCountry] = useState('')
+  const [state, setState] = useState();
+  const [city, setCity] = useState();
 
   const [description, setDescription] = useState("");
   const [type, setType] = useState("");
   const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState([]);
-  // const [country, setCountry] = useState("");
   const [price, setPrice] = useState("");
 
-  useEffect(() => {})
 
-  // useEffect(() => {
-  //   setState(State.getStatesOfCountry(targetCountry.isoCode))
-  //   console.log(targetCountry)
-  // }, [country])
-  
+  const [selectedCountry, setSelectedCountry] = useState<string>();
+const [selectedState, setSelectedState] = useState<string>();
+
+// useEffect(() => {
+//   console.log(State.getStatesOfCountry(selectedCountry))
+// }, [selectedCountry])
   
   
   const {data, isLoading, error, postData}= usePost(url);
@@ -76,77 +78,109 @@ const handleSubmit = async (event:any) => {
   
  
   return (
-    <Box maxWidth="500px" mx="auto">
+    <Box >
+      <Flex
+        direction={{ base: "column", md: "column" }}
+        wrap="wrap"
+        mx={{ md: "unset", base: 8 }}
+        align="center"
+        justify="center"
+      >
       <form onSubmit={handleSubmit}>
         <FormControl mb={4}>
           <FormLabel>Description</FormLabel>
           <Input
             type="text"
-            placeholder="Enter description"
+            
             value={description}
             onChange={(event) => setDescription(event.target.value)}
           />
         </FormControl>
+
         <FormControl mb={4}>
           <FormLabel>Type</FormLabel>
-          <Input
-            type="text"
-            placeholder="Enter type"
-            value={type}
-            onChange={(event) => setType(event.target.value)}
-          />
+          <Select placeholder='Select option'>
+          <option value='option1'>Mansion</option>
+          <option value='option2'>Duplex</option>
+          <option value='option3'>Option 3</option>
+        </Select>
         </FormControl>
+
+        
+
+        <Flex mb={4} >
+          <FormControl pr={4}>
+            <FormLabel>Country</FormLabel>
+            <Select  onChange={(e) => setSelectedCountry(e.target.value)}>
+              {countryData.map((country) => (
+                <option key={country.isoCode} value={country.isoCode}>
+                  {country.name}
+                </option>
+              ))}
+            </Select>
+          </FormControl>
+
+
+          <FormControl mr={2}>
+            <FormLabel>State</FormLabel>
+            <Select  onChange={(e) => setSelectedState(e.target.value)}>
+              {selectedCountry &&
+                State.getStatesOfCountry(selectedCountry).map((state) => (
+                  <option key={state.isoCode} value={state.isoCode}>
+                    {state.name}
+                  </option>
+                ))}
+            </Select>
+          </FormControl>
+         
+        </Flex>
         <FormControl mb={4}>
           <FormLabel>Street</FormLabel>
           <Input
             type="text"
-            placeholder="Enter street"
+            
             value={street}
             onChange={(event) => setStreet(event.target.value)}
           />
-        </FormControl>
-        <Flex mb={4}>
-          <FormControl mr={2}>
-            <FormLabel>City</FormLabel>
-            <Input
-              type="text"
-              placeholder="Enter city"
-              value={city}
-              onChange={(event) => setCity(event.target.value)}
-            />
-          </FormControl>
-         
-          {/* <FormControl mr={2}>
-            <FormLabel>State</FormLabel>
-            <Select value={country} onChange={(event) => setCountry(event.target.value)}>
-        
-        {state.map((state) => (<option value={state.name}>{state.name}</option>))}
-      </Select>
-          </FormControl> */}
-          
-          <FormControl>
-      <FormLabel>Country</FormLabel>
-      <Select value={country.name} onChange={(event) => setTargetCountry(event.target.value)}>
-        
-        {/* {countryData.map((name, index) => <option key={index} value={country.name}>{country.name}</option>)} */}
-        {countryData.map((country) => (<option value={country.name}>{country.name}</option>))}
-      </Select>
-</FormControl>
 
-        </Flex>
+        </FormControl>
         <FormControl mb={4}>
           <FormLabel>Price</FormLabel>
           <Input
             type="number"
-            placeholder="Enter price"
+            
             value={price}
             onChange={(event) => setPrice(event.target.value)}
           />
         </FormControl>
-        <Button type="submit" bg="green.900" color="white">
-          Submit
-        </Button>
+        <Flex
+                mx={{ md: "unset", base: 8 }}
+                justify="center"
+                pt={2}
+                align="center"
+              >
+                <Button
+                  w={{ base: "100%", md: "100%" }}
+                  mx={2}
+                  rounded={"none"}
+                  // onClick={() => handleSubmit()}
+                  // w={{base: '100%', md: '100%'}}
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"green.900"}
+                  color={"white"}
+                  _hover={{
+                    bg: "green.500",
+                  }}
+                >
+                  Sell
+                </Button>
+              </Flex>
       </form>
+
+
+      </Flex>
+
     </Box>
   );
 };
