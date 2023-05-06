@@ -28,7 +28,7 @@ interface ISignInFormProps {
   password: string;
 }
 export default function SignInForm() {
-  const [login, setLogin] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
  
   // const { data: session } = useSession()
   // console.log(session)
@@ -51,6 +51,7 @@ export default function SignInForm() {
       initialValues={initialValues}
       // validationSchema={validationSchema}
       onSubmit={async({ email, password }) => {
+        setIsLoading(true)
         const result = await signIn("credentials", {
           email: email,
           password: password,
@@ -58,6 +59,7 @@ export default function SignInForm() {
           // callbackUrl: "/",
         })
         if(result?.ok ){
+          setIsLoading(false)
           router.push('/')
           toast({
             title: 'Succesful Login',
@@ -67,6 +69,7 @@ export default function SignInForm() {
             isClosable: true,
           })
         }else{
+          setIsLoading(false)
           toast({
             title: 'Failed Login',
             description: "Incorrect username or password",
@@ -199,7 +202,8 @@ export default function SignInForm() {
                 pt={2}
                 align="center"
               >
-                <Button
+                {!isLoading ? (
+                  <Button
                   w={{ base: "100%", md: "60%" }}
                   mx={2}
                   rounded={"none"}
@@ -215,6 +219,15 @@ export default function SignInForm() {
                 >
                   LogIn
                 </Button>
+                ) :
+                (<Button
+                  isLoading
+                  loadingText='Submitting'
+                  colorScheme='teal'
+                  variant='outline'
+                
+                />)
+                }
               </Flex>
 
               <Stack pt={6}>
@@ -237,54 +250,6 @@ export default function SignInForm() {
     </Formik>
   );
 }
-
-
-
-// import { useState } from "react";
-// import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
-
-// function LoginForm() {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   const handleSubmit = async (e:any) => {
-//    let payload ={
-//     email: email,
-//     password: password
-//    }
-//    console.log((payload))
-//     e.preventDefault();
-
-//     const response = await fetch("https://real-estate-yjz9.onrender.com/seller/login", {
-//       method: "POST",
-//       headers: { 'Access-Control-Allow-Origin': '*',
-//                   'Content-type': "application/json"
-//     },
-//       body: JSON.stringify(payload)
-     
-//     });
-
-//     const data = await response.json();
-
-//     console.log(data); // do something with the response data
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <FormControl id="email" isRequired>
-//         <FormLabel>Emaill address</FormLabel>
-//         <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-//       </FormControl>
-//       <FormControl id="password" isRequired>
-//         <FormLabel>Password</FormLabel>
-//         <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-//       </FormControl>
-//       <Button type="submit">Login</Button>
-//     </form>
-//   );
-// }
-
-// export default LoginForm;
 
 
 

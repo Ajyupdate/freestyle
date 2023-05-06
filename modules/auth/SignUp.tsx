@@ -37,6 +37,7 @@ interface ISignUpFormProps{
 export default function SignUpForm() {
   const toast = useToast()
   const router = useRouter()
+  const [isLoading, setIsLoading] = React.useState(false)
   const initialValues:ISignUpFormProps  = { 
     first_name: '',
     last_name: "",
@@ -69,6 +70,7 @@ export default function SignUpForm() {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values) => {
+        setIsLoading(true)
         const { confirmPassword, ...data } = values;
         console.log(data)
         fetch(`${API_ENDPOINT}seller/signup`, {
@@ -80,6 +82,7 @@ export default function SignUpForm() {
         })
           .then((response) => response.json())
           .then((data) => {
+            setIsLoading(false)
             if(data.success){
               console.log("Success:", data);
               router.push('/auth/sign-in')
@@ -92,6 +95,7 @@ export default function SignUpForm() {
               })
             }else {
               console.log(data)
+              setIsLoading(false)
               toast({
                 title: 'Failed',
                 description:`${data.message}`,
@@ -104,6 +108,7 @@ export default function SignUpForm() {
             
           })
           .catch((error) => {
+            setIsLoading(false)
             console.error("Error:", error);
             toast({
               title: 'Failed Login',
@@ -307,6 +312,7 @@ export default function SignUpForm() {
             
 
             <Flex mx={{md:'unset', base: 8}} justify="center" pt={2} align='center' >
+              {!isLoading ?(
               <Button
               w={{base: '100%', md:"60%"}} mx={2}
                 rounded={'none'}
@@ -320,7 +326,15 @@ export default function SignUpForm() {
                   bg: 'green.500',
                 }}>
                 Sign up
-              </Button>
+              </Button>) : 
+              (<Button
+                isLoading
+                loadingText='Submitting'
+                colorScheme='teal'
+                variant='outline'
+              
+              />)
+              }
             </Flex>
 
             
