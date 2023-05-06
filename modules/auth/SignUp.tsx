@@ -20,6 +20,7 @@ import {
 } from "@chakra-ui/react";
 import * as Yup from 'yup'
 import { useRouter } from 'next/router';
+import MyButton, { SubmittingButton } from '../../utils/button';
 const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 
@@ -294,7 +295,7 @@ export default function SignUpForm() {
               <ErrorMessage  name='city'/> */}
             </FormControl> 
 
-          </Flex>
+           </Flex>
           
 
           <Box >
@@ -311,32 +312,18 @@ export default function SignUpForm() {
                   
             
 
-            <Flex mx={{md:'unset', base: 8}} justify="center" pt={2} align='center' >
+            <>
               {!isLoading ?(
-              <Button
-              w={{base: '100%', md:"60%"}} mx={2}
-                rounded={'none'}
-                onClick={() => handleSubmit()}
-                // w={{base: '100%', md: '100%'}}
-                loadingText="Submitting"
-                size="lg"
-                bg={'green.900'}
-                color={'white'}
-                _hover={{
-                  bg: 'green.500',
-                }}>
-                Sign up
-              </Button>) : 
-              (<Button
-                isLoading
-                loadingText='Submitting'
-                colorScheme='teal'
-                variant='outline'
-              
-              />)
+              <MyButton buttonText={"sign up"} handleSubmit={handleSubmit}/>
+              ) : 
+              (
+              <SubmittingButton/>
+              )
               }
-            </Flex>
 
+              
+            </>
+            <MyButton children={'sign up'} handleSubmit={handleSubmit}/>
             
             <Stack pt={6}>
               <Text align={'center'} color='green.900' fontWeight={900}>
