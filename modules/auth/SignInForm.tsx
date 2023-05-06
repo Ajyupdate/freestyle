@@ -49,7 +49,7 @@ export default function SignInForm() {
   return (
     <Formik
       initialValues={initialValues}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
       onSubmit={async({ email, password }) => {
         setIsLoading(true)
         const result = await signIn("credentials", {
@@ -81,50 +81,6 @@ export default function SignInForm() {
 
 
 
-        // const postBody = { email, password };
-        // console.log(postBody);
-
-        // const handleSubmit = async () => {
-        //   try {
-        //     const response = await fetch(`${API_ENDPOINT}seller/login`, {
-        //       method: "POST",
-        //             headers: { 'Access-Control-Allow-Origin': '*',
-        //           'Content-type': "application/json"
-        //       },
-        //       body: JSON.stringify({ email, password }),
-        //     });
-        //     console.log(response)
-
-        //     if (!response.ok) {
-        //       console.log("Login failed");
-        //     }
-        //     if(response.ok){
-        //       const {token} = await response.json()
-        //       console.log(token)
-        //       setLogin(true)
-        //       // cookies.set('token',token, {
-        //       //   path: '/',
-        //       // } )
-        //        router.push('/')
-        //     localStorage.setItem('token', token)
-        //     // router.push('/')
-        //     }
-            
-           
-        //   } catch (error) {
-        //     console.log(error)
-        //     toast({
-        //       title: "Login failed",
-        //       description: `${error}`,
-        //       status: "error",
-        //       duration: 5000,
-        //       isClosable: true,
-        //     });
-        //   }
-
-          
-        // };
-        // handleSubmit();
       }}
     >
       {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
@@ -148,6 +104,7 @@ export default function SignInForm() {
                     padding: "30px",
                     border: "1px solid black;", // apply custom border style
                   }}
+                  onBlur={handleBlur('email')}
                   rounded={"none"}
                   size={"lg"}
                   placeholder="Email"
@@ -156,7 +113,9 @@ export default function SignInForm() {
                   value={values.email}
                   onChange={handleChange}
                 />
-                <ErrorMessage name="email" />
+                <Box mt={2} color="red.500" fontSize="sm">
+                  <ErrorMessage name="email" />
+                </Box>
               </FormControl>
 
               <FormControl
@@ -170,6 +129,7 @@ export default function SignInForm() {
                     padding: "30px",
                     border: "1px solid black;", // apply custom border style
                   }}
+                  onBlur={handleBlur('password')}
                   rounded={"none"}
                   placeholder="Password"
                   size={"lg"}
@@ -178,7 +138,11 @@ export default function SignInForm() {
                   value={values.password}
                   onChange={handleChange}
                 />
-                <ErrorMessage name="password" />
+
+                <Box mt={2} color="red.500" fontSize="sm">
+                  <ErrorMessage name="password" />
+                </Box>
+                
               </FormControl>
             </Flex>
 
