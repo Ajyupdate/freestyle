@@ -29,7 +29,7 @@ const SingleHome = ({ title, location, price, image }: ISingleHouseProps) => {
 
 export default function SimpleThreeColumns() {
   return (
-    <Box  px={{base: 8, md:'5%'}} mt={12}>
+    <Box   mt={12}>
     
         <Flex
               

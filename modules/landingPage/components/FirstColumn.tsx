@@ -21,7 +21,7 @@ import {
 export default function FirstColumn() {
   const [isDesktop] = useMediaQuery("(min-width: 768px)");
   return (
-    <Container maxW={'100%'}  px={{ md:'5%'}}>
+    <Container maxW={'100%'}  >
       <Stack
        
         align={'center'}

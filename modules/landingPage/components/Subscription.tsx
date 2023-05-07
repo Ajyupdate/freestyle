@@ -8,7 +8,7 @@ const Subscription = (iSubscription: iSubscription) => {
     
     
 
-    <Box border="2px"  borderWidth="6px" borderColor="blue.100"  mx={{ md:'5%'}}  color='white' mt={20} >
+    <Box border="2px"  borderWidth="6px" borderColor="blue.100"  color='white' mt={20} >
 
       <Box  bg='#03373A' p={12}>
           <Box >
