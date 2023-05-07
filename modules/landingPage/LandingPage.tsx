@@ -32,8 +32,8 @@ const LandingPage = (props: iLandingPage) => {
   
   return (
     <div>
-      <Box bg='rgb(244, 254, 255)'>
-        <Nav/>
+      <Box >
+        {/* <Nav/> */}
         <FirstColumn/>
       </Box>
       <Box>
