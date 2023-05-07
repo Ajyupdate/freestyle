@@ -44,7 +44,7 @@ const Feature = ({ title, text, image }: FeatureProps) => {
 
 export default function WhyChooseUs() {
   return (
-  <Box px={{base: 8, md:'5%'}} mt={20}>        
+  <Box  mt={20}>        
       <Center mt={8}>
         <Heading>
             Why Choose Us 

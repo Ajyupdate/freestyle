@@ -12,7 +12,7 @@ export default function Layout({ children,  }: ILandingPageLayout) {
     
       {/* <Navbar /> */}
       <Nav/>
-      <main>{children}</main>
+      <Box mx={{base: 8 ,md: 20}}>{children}</Box>
       <Footer />
     </Box>
   )
