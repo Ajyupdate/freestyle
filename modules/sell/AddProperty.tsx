@@ -87,11 +87,12 @@ const handleSubmit = async (event:any) => {
         justify="center"
       >
       <form onSubmit={handleSubmit}>
-        <FormControl mb={4}>
+        <FormControl mb={4}
+        >
           <FormLabel>Description</FormLabel>
           <Input
             type="text"
-            
+            p={4}
             value={description}
             onChange={(event) => setDescription(event.target.value)}
           />
