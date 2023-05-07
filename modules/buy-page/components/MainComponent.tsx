@@ -5,10 +5,13 @@ import { ComponentState, ReactElement } from 'react';
 import { ISingleHouseProps } from "../../../component/types/HouseProps";
 import { Icon } from "@chakra-ui/react";
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { useRouter } from "next/router";
 
 export default function MainComponentAction({title, location, price, image}: ISingleHouseProps){
+    const router = useRouter()
     return(
         <Box  
+        onClick={() => console.log(router.push('./buy/1'))}
         >
 
             <Stack 
