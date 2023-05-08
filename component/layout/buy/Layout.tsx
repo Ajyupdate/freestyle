@@ -10,7 +10,7 @@ export interface IBuyLayout{
 
 import { Box, Flex, Heading, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Spacer, Text, useBreakpointValue } from "@chakra-ui/react";
 import LayoutMenu from "./LayoutMenu";
-import Nav from "./Nav";
+import Nav from "../../../modules/landingPage/components/Nav";
 
 function BuyLayout({children, sidebarContent}: IBuyLayout) {
   const sidebarWidth = useBreakpointValue({ base: "100%", md: "33.33%" });

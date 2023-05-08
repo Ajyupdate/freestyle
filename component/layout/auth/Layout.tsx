@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react"
-import Nav from "./Nav"
+// import Nav from "./Nav"
+import Nav from "../../../modules/landingPage/components/Nav"
 export interface ILandingPageLayout{
     children: React.ReactNode
     
@@ -8,6 +9,7 @@ export default function Layout({ children }: ILandingPageLayout) {
   return (
     <>
       <Nav /> 
+      
       <Flex  direction={{md: "column", base: 'column'}} align={'center'} >
         <Heading 
         mt={6}

@@ -59,11 +59,11 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: 'Buy',
-    href: './buy',
+    href: '/buy',
   },
   {
     label: 'Sell',
-    href: './sell/add-property',
+    href: '/sell/add-property',
   },
   {
     label: 'Agents',
@@ -104,7 +104,7 @@ export default function Nav() {
         </Flex>
         <Spacer/>
 
-        <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+        <Flex mt={2} display={{ base: 'none', md: 'flex' }} ml={10}>
           <SelectAndContact isLoggedIn = {isLoggedIn}/>
         </Flex>
        
@@ -139,6 +139,7 @@ const DesktopNav = () => {
 
   const router = useRouter()
   const path = (router.route)
+  console.log(path)
   return (
     <Stack direction={'row'} spacing={4 }>
       
@@ -163,13 +164,23 @@ const DesktopNav = () => {
                 >
                 
                 {navItem.label}
-                {'.'+`${path}` === navItem.href ? <Box
+                {`${path}` === navItem.href ? <Box
+                    
                     bg="black"
                     marginLeft={4}
                     borderRadius="50%"
                     width="15px"
                     height="15px"
-                  /> : ''}
+                  /> : 
+                  <Box
+                    
+                    // bg="black"
+                    marginLeft={4}
+                    borderRadius="50%"
+                    width="15px"
+                    height="15px"
+                  />
+                  }
               </Link>
             </PopoverTrigger>
 
