@@ -4,7 +4,11 @@
 
 Input::placeholder {
     color: black; /* your desired color */
-    
   }
+
+select{
+  background-color: red;
+  color: red;
+}
 
  
