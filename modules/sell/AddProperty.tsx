@@ -216,11 +216,12 @@ import MyButton, { SubmittingButton } from '../../utils/button';
 import { Country, State, City }  from 'country-state-city';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import { PostData } from '../../hooks/postHook';
 
 const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 
-interface IAddPropertyFormProps{
+export interface IAddPropertyFormProps{
     stateData:   string;
     cityData:    string;
     country:        string;
@@ -271,7 +272,7 @@ export default function AddPropertyForm() {
       initialValues={initialValues}
       // validationSchema={validationSchema}
       
-      onSubmit={(values, {setSubmitting}) => {
+      onSubmit={async(values, {setSubmitting}) => {
         const dataToSend = {
           country: values.country,
           state: values.state,
@@ -296,7 +297,11 @@ export default function AddPropertyForm() {
           .finally(() => {
             setSubmitting(false);
           });
+
+        // const response = await PostData(`${API_ENDPOINT}property/put_property_for_sale`, dataToSend);
+        // console.log(response);
       } }
+
     >
       {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
         <Form  >
