@@ -139,7 +139,7 @@ const DesktopNav = () => {
 
   const router = useRouter()
   const path = (router.route)
-  console.log(path)
+  // s
   return (
     <Stack direction={'row'} spacing={4 }>
       
@@ -339,7 +339,7 @@ const SelectAndContact = ({isLoggedIn} : ITokenProps) => {
   const {data:session, status} = useSession()
   
   
-  console.log(session)
+  // console.log(session)
   const { isOpen, onOpen, onClose } = useDisclosure()
    function logout(){
     localStorage.removeItem("token");

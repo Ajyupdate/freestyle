@@ -1,192 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import {
-//   FormControl,
-//   FormLabel,
-//   Input,
-//   Button,
-//   Flex,
-//   Box,
-//   Select,
-// } from "@chakra-ui/react";
-// import axios from "axios";
-// import usePost from "../../hooks/usePost";
-// import { Country, State, City }  from 'country-state-city';
-// // import { getCountries, getStates, getCities } from 'country-state-city';
-
-// const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
-// const url = `${API_ENDPOINT}/property/put_property_for_sale}`
-
-
-
-// const PropertyForm = () => {
-
-//   let countryData = Country.getAllCountries();
-//   const [stateData, setStateData] = useState();
-//   const [cityData, setCityData] = useState();
-
-//   const [country, setCountry] = useState(countryData[0]);
-//   const [state, setState] = useState();
-//   const [city, setCity] = useState();
-//   const [countryName, setCountryName] = useState(country.name)
-//   const [description, setDescription] = useState("");
-//   const [type, setType] = useState("");
-//   const [street, setStreet] = useState("");
-//   const [price, setPrice] = useState("");
-
-
-//   const [selectedCountry, setSelectedCountry] = useState<string>();
-// const [selectedState, setSelectedState] = useState<string>();
-
-//   useEffect(() => {
-//     setCountryName(country.name)
-//   }, [country])
-  
-//   const {data, isLoading, error, postData}= usePost(url);
-// //   const handleSubmit = (event) => {
-// //     event.preventDefault();
-// //     const property = {
-// //       description,
-// //       type,
-// //       street,
-// //       city,
-// //       state,
-// //       country,
-// //       price,
-// //     };
-// //     postData(property);
-// //   };
-// const handleSubmit = async (event:any) => {
-//     event.preventDefault();
-//     const property = {
-//       description,
-//       type,
-//       street,
-//       city,
-//       state,
-//       selectedCountry,
-//       price,
-//     };
-//     console.log(property)
-//     // try {
-//     //   const response = await axios.post(url, property);
-//     //   console.log(response.data);
-//     //   console.log(response)
-//     // } catch (error) {
-//     //   console.error(error);
-//     // }
-//   };
-  
- 
-//   return (
-//     <Box >
-//       <Flex
-//         direction={{ base: "column", md: "column" }}
-//         wrap="wrap"
-//         mx={{ md: "unset", base: 8 }}
-//         align="center"
-//         justify="center"
-//       >
-//       <form onSubmit={handleSubmit}>
-//         <FormControl mb={4}
-//         >
-//           <FormLabel>Description</FormLabel>
-//           <Input
-//             type="text"
-//             p={4}
-//             value={description}
-//             onChange={(event) => setDescription(event.target.value)}
-//           />
-//         </FormControl>
-
-//         <FormControl mb={4}>
-//           <FormLabel>Type</FormLabel>
-//           <Select placeholder='Select option'>
-//           <option value='option1'>Mansion</option>
-//           <option value='option2'>Duplex</option>
-//           <option value='option3'>Option 3</option>
-//         </Select>
-//         </FormControl>
-
-        
-
-//         <Flex mb={4} >
-//           <FormControl pr={4}>
-//             <FormLabel>Country</FormLabel>
-//             <Select  onChange={(e) => setSelectedCountry(e.target.value)}>
-//               {countryData.map((country) => (
-//                 <option key={country.isoCode} value={country.isoCode}>
-//                   {country.name}
-//                 </option>
-//               ))}
-//             </Select>
-//           </FormControl>
-
-
-//           <FormControl mr={2}>
-//             <FormLabel>State</FormLabel>
-//             <Select  onChange={(e) => setSelectedState(e.target.value)}>
-//               {selectedCountry &&
-//                 State.getStatesOfCountry(selectedCountry).map((state) => (
-//                   <option key={state.isoCode} value={state.isoCode}>
-//                     {state.name}
-//                   </option>
-//                 ))}
-//             </Select>
-//           </FormControl>
-         
-//         </Flex>
-//         <FormControl mb={4}>
-//           <FormLabel>Street</FormLabel>
-//           <Input
-//             type="text"
-            
-//             value={street}
-//             onChange={(event) => setStreet(event.target.value)}
-//           />
-
-//         </FormControl>
-//         <FormControl mb={4}>
-//           <FormLabel>Price</FormLabel>
-//           <Input
-//             type="number"
-            
-//             value={price}
-//             onChange={(event) => setPrice(event.target.value)}
-//           />
-//         </FormControl>
-//         <Flex
-//                 mx={{ md: "unset", base: 8 }}
-//                 justify="center"
-//                 pt={2}
-//                 align="center"
-//               >
-//                 <Button
-//                   w={{ base: "100%", md: "100%" }}
-//                   mx={2}
-//                   rounded={"none"}
-//                   onClick={ handleSubmit}
-//                   // w={{base: '100%', md: '100%'}}
-//                   loadingText="Submitting"
-//                   size="lg"
-//                   bg={"green.900"}
-//                   color={"white"}
-//                   _hover={{
-//                     bg: "green.500",
-//                   }}
-//                 >
-//                   Sell
-//                 </Button>
-//               </Flex>
-//       </form>
-
-
-//       </Flex>
-
-//     </Box>
-//   );
-// };
-
-// export default PropertyForm;
 
 
 
@@ -231,21 +42,35 @@ export interface IAddPropertyFormProps{
     type: string,
     street: string,
     price: number
-
+    name? : string,
+    id?: string
 
 }
 export default function AddPropertyForm() {
-  let countryData = Country.getAllCountries();
+ 
   const toast = useToast()
   const router = useRouter()
   const [isLoading, setIsLoading] = React.useState(false)
-  const [selectedCountry, setSelectedCountry] = React.useState<string>();
-  const [selectedState, setSelectedState] = React.useState<string>();
+  const [states, setStates] = React.useState([]);
+
+  React.useEffect(() => {
+    // Fetch the states data from Nigeria Geo-JSON API
+    axios
+      .get('https://locus.fkkas.com/api/states')
+      .then((response) => {
+        console.log(response.data.data)
+        setStates(response.data.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching states:', error);
+      });
+  }, []);
 
   const initialValues:IAddPropertyFormProps  = { 
     stateData:   '',
     cityData:    '',
-    country:        countryData[0].name,
+    country:       "Nigeria",
     state: '',
     city:       '',
     description:     '',
@@ -282,6 +107,7 @@ export default function AddPropertyForm() {
           street: values.street,
           price: values.price
         };
+        console.log(dataToSend)
         const headers = {
           'Authorization': `Bearer ${token}`
         };
@@ -372,6 +198,25 @@ export default function AddPropertyForm() {
                 flex={{ base: "1 0 100%", md: "1 0 45%" }}
               >
                 <FormLabel>type</FormLabel>
+
+                {/* <Select 
+                
+                css={{
+                  // padding: "30px",
+                  border: "1px solid black;", // apply custom border style
+                }}
+                
+                onBlur={handleBlur('type')}
+                  rounded={"none"}
+                  size={"lg"} h={'16'}
+                onChange={handleChange}  id="state" placeholder="Select a state" >
+                  
+                  
+                  <option value='option1'>Mansion</option>
+                  <option  value='option2'>Duplex</option>
+                  <option value='option3'>Option 3</option>
+                </Select> */}
+                
                 <Input
                   css={{
                     padding: "30px",
@@ -428,29 +273,10 @@ export default function AddPropertyForm() {
                 flex={{ base: "1 0 100%", md: "1 0 45%" }}
               >
                 <FormLabel>Country</FormLabel>
-                 {/* <Select 
-                 rounded={'none'}
-                 sx={{
-                   height: "64px", // set the height of the select element
-                   fontSize: "18px", // set the font size of the select element
-                   padding: "16px", // set the padding of the select element
-                   borderRadius: "8px", // set the border radius of the select element
-                 }}
-                 css={{
-                  border: "1px solid black;", // apply custom border style
-                }}
-                 
-                 onChange={(e) => setSelectedCountry(e.target.value)}>
-                 {countryData.map((country) => (
-                <option key={country.isoCode} 
-                onChange={handleChange}
-                value={country.isoCode}>
-                  {country.name}
-                  </option>
-                ))}
-              </Select> */}
+                
 
                 <Input
+                  readOnly
                   css={{
                     padding: "30px",
                     border: "1px solid black;", // apply custom border style
@@ -469,6 +295,8 @@ export default function AddPropertyForm() {
                 </Box>
               </FormControl>
 
+
+
               <FormControl
                 w={{ base: "100%", md: "70%" }}
                 mx={{ md: "2" }}
@@ -476,27 +304,28 @@ export default function AddPropertyForm() {
                 flex={{ base: "1 0 100%", md: "1 0 45%" }}
               >
                 <FormLabel>State</FormLabel>
-                {/* <Select 
+
+                <Select 
+                
                 css={{
+                  // padding: "30px",
                   border: "1px solid black;", // apply custom border style
                 }}
-                rounded={'none'}
-                sx={{
-                  height: "64px", // set the height of the select element
-                  fontSize: "18px", // set the font size of the select element
-                  padding: "16px", // set the padding of the select element
-                  borderRadius: "8px", // set the border radius of the select element
-                }}
-                onChange={handleChange}>
-                {selectedCountry &&
-                State.getStatesOfCountry(selectedCountry).map((state) => (
-                  <option key={state.isoCode} value={state.isoCode}>
-                    {state.name}
-                  </option>
-                ))}
-                </Select> */}
 
-                <Input
+                onBlur={handleBlur('description')}
+                  rounded={"none"}
+                  size={"lg"} h={'16'}
+                onChange={handleChange} id="state" placeholder="Select a state" >
+                  
+                  {states && states.map((state:IAddPropertyFormProps) => (
+                    <option value={state.name} key={state.id}>
+                      {state.name}
+                    </option>
+                  ))}
+                </Select>
+                
+
+                {/* <Input
                   css={{
                     padding: "30px",
                     border: "1px solid black;", // apply custom border style
@@ -509,7 +338,7 @@ export default function AddPropertyForm() {
                   name="state"
                   value={values.state}
                   onChange={handleChange}
-                />
+                /> */}
 
                 <Box mt={2} color="red.500" fontSize="sm">
                   <ErrorMessage name="state" />
