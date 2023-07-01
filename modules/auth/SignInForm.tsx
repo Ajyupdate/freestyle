@@ -1,26 +1,22 @@
-
-import * as React from "react";
-import { Formik, Form, ErrorMessage } from "formik";
-import { useSession, signIn, signOut } from "next-auth/react"
 import {
-  FormControl,
-  useToast,
-  Input,
-  Button,
-  Stack,
-  Flex,
   Box,
-  Text,
+  Flex,
+  FormControl,
+  Input,
   Link,
-  Container,
+  Stack,
+  Text,
+  useToast,
 } from "@chakra-ui/react";
-import * as Yup from "yup";
+import { ErrorMessage, Form, Formik } from "formik";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import * as React from "react";
 import Cookies from "universal-cookie";
+import * as Yup from "yup";
 import MyButton, { SubmittingButton } from "../../utils/button";
 
-
-const cookies = new Cookies
+const cookies = new Cookies();
 
 const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
@@ -30,10 +26,10 @@ interface ISignInFormProps {
 }
 export default function SignInForm() {
   const [isLoading, setIsLoading] = React.useState(false);
- 
+
   // const { data: session } = useSession()
   // console.log(session)
-  
+
   const router = useRouter();
   const toast = useToast();
   const initialValues: ISignInFormProps = {
@@ -51,37 +47,34 @@ export default function SignInForm() {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={async({ email, password }) => {
-        setIsLoading(true)
+      onSubmit={async ({ email, password }) => {
+        setIsLoading(true);
         const result = await signIn("credentials", {
           email: email,
           password: password,
           redirect: false,
           // callbackUrl: "/",
-        })
-        if(result?.ok ){
-          setIsLoading(false)
-          router.push('/')
+        });
+        if (result?.ok) {
+          setIsLoading(false);
+          router.push("/");
           toast({
-            title: 'Succesful Login',
+            title: "Succesful Login",
             description: "Login Successful",
-            status: 'success',
+            status: "success",
             duration: 3000,
             isClosable: true,
-          })
-        }else{
-          setIsLoading(false)
+          });
+        } else {
+          setIsLoading(false);
           toast({
-            title: 'Failed Login',
+            title: "Failed Login",
             description: "Incorrect username or password",
-            status: 'error',
+            status: "error",
             duration: 9000,
             isClosable: true,
-          })
+          });
         }
-
-
-
       }}
     >
       {({ values, handleBlur, errors, handleChange, handleSubmit }) => (
@@ -105,7 +98,7 @@ export default function SignInForm() {
                     padding: "30px",
                     border: "1px solid black;", // apply custom border style
                   }}
-                  onBlur={handleBlur('email')}
+                  onBlur={handleBlur("email")}
                   rounded={"none"}
                   size={"lg"}
                   placeholder="Email"
@@ -130,7 +123,7 @@ export default function SignInForm() {
                     padding: "30px",
                     border: "1px solid black;", // apply custom border style
                   }}
-                  onBlur={handleBlur('password')}
+                  onBlur={handleBlur("password")}
                   rounded={"none"}
                   placeholder="Password"
                   size={"lg"}
@@ -143,7 +136,6 @@ export default function SignInForm() {
                 <Box mt={2} color="red.500" fontSize="sm">
                   <ErrorMessage name="password" />
                 </Box>
-                
               </FormControl>
             </Flex>
 
@@ -155,22 +147,21 @@ export default function SignInForm() {
                 mb={8}
                 justify={"right"}
               >
-                
                 <Link fontWeight={900} mr={{ md: "15%" }}>
                   Forgot Password?
                 </Link>
               </Flex>
 
               <>
-                  {!isLoading ? (
-                    <MyButton buttonText={'sign in'} handleSubmit={handleSubmit}/>
-                    ) :
-                    (
-                      <SubmittingButton/>
-                    )
-                  }
+                {!isLoading ? (
+                  <MyButton
+                    buttonText={"sign in"}
+                    handleSubmit={handleSubmit}
+                  />
+                ) : (
+                  <SubmittingButton />
+                )}
               </>
-
 
               <Stack pt={6}>
                 <Text align={"center"} color="green.900" fontWeight={900}>
@@ -184,7 +175,6 @@ export default function SignInForm() {
                   </Link>
                 </Text>
               </Stack>
-              
             </Box>
           </Box>
         </Form>
@@ -192,6 +182,3 @@ export default function SignInForm() {
     </Formik>
   );
 }
-
-
-
