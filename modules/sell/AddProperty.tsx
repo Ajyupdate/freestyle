@@ -33,8 +33,8 @@ const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 
 export interface IAddPropertyFormProps{
-    stateData:   string;
-    cityData:    string;
+    
+    
     country:        string;
     state: string;
     city:       string;
@@ -44,8 +44,9 @@ export interface IAddPropertyFormProps{
     price: number
     name? : string,
     id?: string
-
 }
+
+
 export default function AddPropertyForm() {
  
   const toast = useToast()
@@ -68,8 +69,7 @@ export default function AddPropertyForm() {
   }, []);
 
   const initialValues:IAddPropertyFormProps  = { 
-    stateData:   '',
-    cityData:    '',
+    
     country:       "Nigeria",
     state: '',
     city:       '',
@@ -84,8 +84,10 @@ export default function AddPropertyForm() {
     type: Yup.string().max(15, 'must not exceed 15 character').required(),
     street: Yup.string().max(15, 'must not exceed 15 character').required(),
     price: Yup.string().required(),
-    phone_number: Yup.number().min(11, 'must not be less than 11').required("Phone numeber is required"),
-    description: Yup.string().required()
+    description: Yup.string().required(),
+    country: Yup.string().required(),
+    state: Yup.string().required(),
+    city: Yup.string().max(15, 'must not exceed 15 character').required(),
   })
 
 
@@ -95,7 +97,7 @@ export default function AddPropertyForm() {
   return (
     <Formik
       initialValues={initialValues}
-      // validationSchema={validationSchema}
+      validationSchema={validationSchema}
       
       onSubmit={async(values, {setSubmitting}) => {
         const dataToSend = {
@@ -199,38 +201,28 @@ export default function AddPropertyForm() {
               >
                 <FormLabel>type</FormLabel>
 
-                {/* <Select 
+                <Select 
                 
                 css={{
                   // padding: "30px",
                   border: "1px solid black;", // apply custom border style
                 }}
                 
+                name="type"
+                value={values.type}
                 onBlur={handleBlur('type')}
                   rounded={"none"}
                   size={"lg"} h={'16'}
-                onChange={handleChange}  id="state" placeholder="Select a state" >
+                onChange={handleChange}  
+                id="state" placeholder="Select a state" >
                   
                   
-                  <option value='option1'>Mansion</option>
-                  <option  value='option2'>Duplex</option>
-                  <option value='option3'>Option 3</option>
-                </Select> */}
+                  <option value='Mansion'>Mansion</option>
+                  <option  value='Duplex'>Duplex</option>
+                  <option value='Apartment'>Apartment</option>
+                </Select>
                 
-                <Input
-                  css={{
-                    padding: "30px",
-                    border: "1px solid black;", // apply custom border style
-                  }}
-                  onBlur={handleBlur('type')}
-                  rounded={"none"}
-                  size={"lg"}
-                  
-                  type="text"
-                  name="type"
-                  value={values.type}
-                  onChange={handleChange}
-                />
+                
                 <Box mt={2} color="red.500" fontSize="sm">
                   <ErrorMessage name="type" />
                 </Box>
